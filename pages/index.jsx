@@ -14,7 +14,7 @@ export default function Home() {
 
         <HorizontalAd />
 
-        <div className="col-span-full grid grid-cols-8 my-16">
+        <div className="col-span-full grid grid-cols-8 my-16 relative">
           <div className="col-span-5 col-start-2">
             <h2 className="uppercase font-black text-3xl tracking-widest mb-5">
               Latest
