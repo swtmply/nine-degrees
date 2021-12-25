@@ -9,22 +9,31 @@ export default function MenuDropdown({ title, items }) {
   const [menuState, setMenuState] = useState(false);
   const router = useRouter();
 
-  const onHover = (open) => {
-    if ((!open && !openState) || (open && openState)) setOpenState(!openState);
+  const onHover = (open, action) => {
+    if (
+      (!open && !openState && action === "onMouseEnter") ||
+      (open && openState && action === "onMouseLeave")
+    ) {
+      setOpenState(!openState);
 
-    menuRef?.current?.click();
+      menuRef?.current?.click();
+    }
   };
 
   const onFocus = () => setMenuState(!menuState);
 
   return (
     <Menu
-      as="a"
+      as="div"
       className="relative"
       onClick={() => {
         if (openState && !menuState) {
           setOpenState(!openState);
-          router.push(`/${title.value}`);
+
+          if (title.value.includes("nine-degrees"))
+            router.push(`/${title.value}`);
+
+          router.push(`/categories/${title.value}`);
         }
       }}
     >
@@ -35,8 +44,12 @@ export default function MenuDropdown({ title, items }) {
             className={`${
               open && "text-yellow-300"
             } uppercase font-bold outline-none cursor-pointer`}
-            onMouseEnter={() => onHover(open)}
-            onMouseLeave={() => onHover(open)}
+            onMouseEnter={() => {
+              onHover(open, "onMouseEnter");
+            }}
+            onMouseLeave={() => {
+              onHover(open, "onMouseLeave");
+            }}
           >
             {title.name}
           </Menu.Button>
@@ -47,24 +60,36 @@ export default function MenuDropdown({ title, items }) {
             onMouseEnter={onFocus}
             onMouseLeave={onFocus}
           >
-            <div className="bg-yellow-300 px-4 py-8 rounded-md">
-              {items?.map((subsection, idx) => (
-                <React.Fragment key={idx}>
-                  {idx === 0 ? (
-                    <></>
-                  ) : (
-                    <hr className="border-2 border-black my-4" />
-                  )}
+            <div
+              className={`${
+                title.value === "so-lit" && "hidden"
+              } bg-yellow-300 px-4 py-8 rounded-md`}
+            >
+              {items?.map((subsection, idx) => {
+                return (
+                  <React.Fragment key={idx}>
+                    {idx === 0 ? (
+                      <></>
+                    ) : (
+                      <hr className="border-2 border-black my-4" />
+                    )}
 
-                  <Menu.Item>
-                    <Link href={`/${title.value}/${subsection.value}`}>
-                      <div className="text-black cursor-pointer">
-                        {subsection.name}
-                      </div>
-                    </Link>
-                  </Menu.Item>
-                </React.Fragment>
-              ))}
+                    <Menu.Item>
+                      <Link
+                        href={`${
+                          title.value.includes("nine-degrees")
+                            ? `/${title.value}/${subsection.value}`
+                            : `/categories/${title.value}/${subsection.value}`
+                        }`}
+                      >
+                        <div className="text-black cursor-pointer">
+                          {subsection.name}
+                        </div>
+                      </Link>
+                    </Menu.Item>
+                  </React.Fragment>
+                );
+              })}
             </div>
           </Menu.Items>
         </div>

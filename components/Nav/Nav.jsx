@@ -13,20 +13,20 @@ export default function Nav() {
         searchState ? "z-[60]" : "z-50"
       } col-span-full bg-black h-20 sticky top-0 text-white flex items-center justify-between px-8`}
     >
-      <HomeIcon className="w-8 h-8 hover:text-yellow-300 cursor-pointer" />
+      <Link href="/">
+        <HomeIcon className="w-8 h-8 hover:text-yellow-300 cursor-pointer" />
+      </Link>
 
       {searchState ? (
         <Search />
       ) : (
         <Link href="/">
-          <>
-            <Image
-              className="cursor-pointer"
-              src="/assets/logos/wordmark-white.svg"
-              width={100}
-              height={80}
-            />
-          </>
+          <Image
+            className="cursor-pointer"
+            src="/assets/logos/wordmark-white.svg"
+            width={100}
+            height={80}
+          />
         </Link>
       )}
 

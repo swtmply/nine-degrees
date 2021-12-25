@@ -8,6 +8,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.2",
     "@heroicons/react": "^1.0.5",
+    "@tailwindcss/line-clamp": "^0.3.0",
     "aos": "^2.3.4",
     "next": "latest",
     "react": "^17.0.2",

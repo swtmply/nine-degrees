@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import ArticlesSpread from "../Articles/Spread/ArticlesSpread";
+import ArticlesStack from "../Articles/Stack/ArticlesStack";
 
 export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
   const [pageNumber, setPageNumber] = useState(0);
@@ -16,12 +17,17 @@ export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
   };
 
   return (
-    <React.Fragment>
-      {items.slice(pagesVisited, pagesVisited + itemsPerPage).map((_, idx) => {
-        if (type === "spread") return <ArticlesSpread key={idx} />;
+    <div className="flex flex-col">
+      <div className={`${type === "stack" && "flex flex-wrap"}`}>
+        {items
+          .slice(pagesVisited, pagesVisited + itemsPerPage)
+          .map((_, idx) => {
+            if (type === "spread") return <ArticlesSpread key={idx} />;
 
-        // TODO: stack articles
-      })}
+            // TODO: stack articles
+            return <ArticlesStack key={idx} />;
+          })}
+      </div>
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
@@ -35,6 +41,6 @@ export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
         breakClassName={"font-bold"}
         disabledClassName={"disabled"}
       />
-    </React.Fragment>
+    </div>
   );
 }
