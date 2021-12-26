@@ -23,7 +23,8 @@
     "react-intersection-observer": "^8.33.1",
     "react-paginate": "^8.1.0",
     "react-query": "^3.34.6",
-    "swiper": "^7.4.1"
+    "swiper": "^7.4.1",
+    "tailwind-scrollbar-hide": "^1.1.7"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.0",
