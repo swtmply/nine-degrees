@@ -7,7 +7,7 @@ import Search from "../Search/Search";
 
 export default function Nav() {
   const [searchState, setSearchState] = useState(false);
-  const [y, setY] = useState(window.scrollY);
+  const [y, setY] = useState(null);
 
   const handleNavigation = useCallback(
     (e) => {

@@ -30,10 +30,11 @@ export default function MenuDropdown({ title, items }) {
         if (openState && !menuState) {
           setOpenState(!openState);
 
-          if (title.value.includes("nine-degrees"))
+          if (title.value.includes("nine-degrees")) {
             router.push(`/${title.value}`);
-
-          router.push(`/categories/${title.value}`);
+          } else {
+            router.push(`/categories/${title.value}`);
+          }
         }
       }}
     >

@@ -44,3 +44,54 @@
   color: #d4d4d8;
   background-color: #f4f4f5;
 }
+
+/* Laura */
+
+.stats {
+  font-size: 51px;
+  text-align: center;
+}
+
+.stats-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fae62f;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.stats-label > * {
+  margin-left: 0.5rem;
+}
+
+.table {
+  border-spacing: 0 15px;
+}
+
+i {
+  font-size: 1rem !important;
+}
+
+.table tr {
+  border-radius: 20px;
+}
+
+tr td:nth-child(n + 7),
+tr th:nth-child(n + 7) {
+  border-radius: 0 0.625rem 0.625rem 0 !important;
+}
+
+tr td:nth-child(1),
+tr th:nth-child(1) {
+  border-radius: 0.625rem 0 0 0.625rem !important;
+}
+
+.flex-container {
+  display: flex;
+  overflow: hidden !important;
+}
+
+.flex-continer > * {
+  flex: 0 0 auto;
+}

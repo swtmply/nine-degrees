@@ -6,7 +6,8 @@
       "@/models/*": ["models/*"],
       "@/lib/*": ["lib/*"],
       "@/fonts/*": ["fonts/*"],
-      "@/hooks/*": ["hooks/*"]
+      "@/hooks/*": ["hooks/*"],
+      "@/utils/*": ["utils/*"]
     }
   }
 }
