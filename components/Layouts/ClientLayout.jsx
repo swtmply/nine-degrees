@@ -15,7 +15,7 @@ export default function ClientLayout({ children }) {
     <div className="grid grid-cols-12 auto-rows-min gap-0 w-full min-h-screen">
       <Nav />
 
-      {/* TODO: check if home or not then change headers */}
+      {/* check if home or not then change headers */}
       {pathname !== undefined ? (
         <CategoryHeader category={pathname?.split("/")[0]} />
       ) : (

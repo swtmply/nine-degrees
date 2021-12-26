@@ -1,7 +1,7 @@
 import IconInputField from "@/components/Input/IconInputField";
 import { tableContents, tableHeaders } from "@/lib/constants";
 import { SearchIcon } from "@heroicons/react/outline";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import StatusFilter from "../Filter/StatusFilter";
 
@@ -9,11 +9,15 @@ export default function Table({ articles }) {
   const [searchFilter, setSearchFilter] = useState("");
   const [selectFilter, setSelectFilter] = useState("All");
 
+  const [filteredArticles, setFilteredArticles] = useState(articles);
+
   const [pageNumber, setPageNumber] = useState(0);
+
+  // TODO: change kung ilan gusto XD
   const articlePerPage = 5;
   const pagesVisited = pageNumber * articlePerPage;
 
-  const pageCount = Math.ceil(10 / articlePerPage);
+  const pageCount = Math.ceil(filteredArticles?.length / articlePerPage);
 
   const handlePageClick = (e) => {
     const selectedPage = e.selected;
@@ -21,10 +25,14 @@ export default function Table({ articles }) {
     setPageNumber(selectedPage);
   };
 
+  useEffect(() => {
+    // TODO: filter articles here
+    // filter with status then search
+  }, [searchFilter, selectFilter]);
+
   return (
     <div>
       <div className="h-16 py-8 mt-5 rounded-md flex items-center space-x-4">
-        {/* Filter with search or status */}
         <StatusFilter filter={selectFilter} setFilter={setSelectFilter} />
         <IconInputField
           icon={SearchIcon}
@@ -49,13 +57,15 @@ export default function Table({ articles }) {
             </tr>
           </thead>
           <tbody className="border-x-2 border-gray-200">
+            {/* TODO: change to filtered articles */}
             {[...Array(10)]
-              .slice(pagesVisited, pagesVisited + 5)
+              .slice(pagesVisited, pagesVisited + articlePerPage)
               .map((_, idx) => (
                 <tr
                   key={idx}
                   className="border-b border-gray-100 even:bg-gray-100 hover:bg-gray-200 cursor-pointer"
                 >
+                  {/* TODO: change to table row data */}
                   {tableContents.map((td, idx) => (
                     <td
                       key={idx}
@@ -66,6 +76,7 @@ export default function Table({ articles }) {
                   ))}
                 </tr>
               ))}
+            {/* Filler Row */}
             <tr className="bg-slate-100 border-2 border-gray-200 py-4 h-12">
               <td></td>
               <td></td>
