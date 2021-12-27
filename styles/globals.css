@@ -45,6 +45,44 @@
   background-color: #f4f4f5;
 }
 
+.rdw-option-wrapper {
+  height: 35px !important;
+  width: 35px !important;
+}
+
+.rdw-option-wrapper > img {
+  height: 15px !important;
+  width: 15px !important;
+}
+
+.rti--container {
+  background: #fff;
+  flex-wrap: nowrap !important;
+  width: 100% !important;
+  overflow: hidden;
+}
+
+.rti--tag {
+  font-size: 1.125rem !important;
+  line-height: 1.75rem !important;
+  font-weight: 600;
+  background: #4100fa !important;
+  color: white;
+  padding: 0.2em 0.5em;
+}
+
+.rti--input {
+  width: 100% !important;
+  inset: 0;
+  font-size: 1.125rem !important /* 18px */;
+  line-height: 1.75rem !important /* 28px */;
+}
+
+.rti--input:focus {
+  outline: none !important;
+  border: none !important;
+}
+
 /* Laura */
 
 .stats {

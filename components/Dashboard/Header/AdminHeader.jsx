@@ -1,7 +1,10 @@
 import { TrashIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function AdminHeader({ articles }) {
+  const router = useRouter();
+
   return (
     <div className="flex justify-between mt-8">
       {/* Stats */}
@@ -9,7 +12,7 @@ export default function AdminHeader({ articles }) {
         <div className=" flex justify-around relative">
           {/* TODO: change to real counts */}
           {[...Array(6)].map((_, idx) => (
-            <div className="text-center">
+            <div className="text-center" key={idx}>
               <p className="font-mono text-8xl">0</p>
             </div>
           ))}
@@ -17,7 +20,7 @@ export default function AdminHeader({ articles }) {
         <div className="bg-yellow-300 w-full py-3 flex justify-around rounded-md">
           {/* TODO: change to real values */}
           {[...Array(6)].map((_, idx) => (
-            <div className="text-center">
+            <div className="text-center" key={idx}>
               <p className="flex space-x-2">
                 <TrashIcon className="w-6 h-6" />
                 <span>Published</span>
@@ -33,8 +36,10 @@ export default function AdminHeader({ articles }) {
           <p className="font-bold text-lg text-right leading-5 mb-2">
             Feeling motivated to inspire Bernadette and Jonathan today?
           </p>
-          {/* TODO: create link */}
-          <button className="w-full py-3 bg-red-500 font-bold text-lg text-white rounded-md hover:bg-red-600">
+          <button
+            onClick={() => router.push("/user/create")}
+            className="w-full py-3 bg-red-500 font-bold text-lg text-white rounded-md hover:bg-red-600"
+          >
             Create Article +
           </button>
         </div>

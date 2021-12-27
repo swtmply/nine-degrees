@@ -24,7 +24,6 @@ export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
           .map((_, idx) => {
             if (type === "spread") return <ArticlesSpread key={idx} />;
 
-            // TODO: stack articles
             return <ArticlesStack key={idx} />;
           })}
       </div>

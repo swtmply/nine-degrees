@@ -1,12 +1,12 @@
 import IconInputField from "@/components/Input/IconInputField";
 import TableDataDialog from "@/components/Popup/TableDataDialog";
-import { tableContents, tableHeaders } from "@/lib/constants";
+import { usersTableContents, usersTableHeaders } from "@/lib/constants";
 import { SearchIcon } from "@heroicons/react/outline";
 import React, { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import StatusFilter from "../Filter/StatusFilter";
 
-export default function Table({ articles }) {
+export default function UsersTable({ articles }) {
   const [searchFilter, setSearchFilter] = useState("");
   const [selectFilter, setSelectFilter] = useState("All");
 
@@ -35,11 +35,7 @@ export default function Table({ articles }) {
   return (
     <div>
       <div className="h-16 py-8 my-6 rounded-md flex items-center space-x-4">
-        <StatusFilter
-          filter={selectFilter}
-          setFilter={setSelectFilter}
-          type="articles"
-        />
+        <StatusFilter filter={selectFilter} setFilter={setSelectFilter} />
         <IconInputField
           icon={SearchIcon}
           value={searchFilter}
@@ -51,7 +47,7 @@ export default function Table({ articles }) {
       <table className="w-full bg-white p-4 table-auto">
         <thead className="border-2 border-gray-200 bg-slate-200">
           <tr>
-            {tableHeaders.map((th, idx) => (
+            {usersTableHeaders.map((th, idx) => (
               <td
                 key={idx}
                 className="font-bold text-lg py-4 px-3 uppercase text-slate-700 tracking-wide"
@@ -72,7 +68,7 @@ export default function Table({ articles }) {
                 className="border-b border-gray-100 even:bg-gray-100 hover:bg-gray-200 cursor-pointer"
               >
                 {/* TODO: change to table row data */}
-                {tableContents.map((td, idx) => (
+                {usersTableContents.map((td, idx) => (
                   <td
                     key={idx}
                     className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate"

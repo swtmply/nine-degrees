@@ -19,7 +19,7 @@ const articleSchema = new Schema(
     },
     status: {
       type: String,
-      default: "draft",
+      default: "Draft",
     },
   },
   { timestamps: true }

@@ -1,14 +1,28 @@
 import { Listbox } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { useState } from "react";
 
-const selection = ["All", "Draft", "Pending", "Published", "Trash"];
+const articlesSelection = [
+  "All",
+  "Published",
+  "Approved",
+  "Pending",
+  "Draft",
+  "Trash",
+];
+const usersSelection = ["All", "Writer", "Head"];
 
-export default function StatusFilter({ filter, setFilter }) {
+export default function StatusFilter({ filter, setFilter, type }) {
+  const [selection, setSelection] = useState(() => {
+    if (type === "articles") return articlesSelection;
+
+    return usersSelection;
+  });
+
   return (
     <Listbox
       as="div"
-      className="relative rounded-md py-2 px-4 w-64 border border-gray-200 bg-white"
+      className="relative rounded-md py-2 px-4 w-64 border border-gray-200 bg-white z-40"
       value={filter}
       onChange={setFilter}
     >

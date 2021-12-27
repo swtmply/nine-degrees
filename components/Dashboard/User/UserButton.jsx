@@ -25,11 +25,18 @@ export default function UserButton() {
           </div>
         </div>
       </Menu.Button>
-      {/* <Menu.Items className="absolute -bottom-24 bg-white space-y-2 w-full flex flex-col rounded-md p-2">
+      <Menu.Items className="absolute -bottom-36 shadow-lg bg-white space-y-2 w-full flex flex-col rounded-md p-2">
         <Menu.Item>
-          <Link href={`/writer/${session?.user.id}/profile`}>
+          <Link href={`/user/profile`}>
             <button className="py-1 hover:bg-yellow-300  rounded-md">
               Profile
+            </button>
+          </Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link href={`/user/settings`}>
+            <button className="py-1 hover:bg-yellow-300  rounded-md">
+              Settings
             </button>
           </Link>
         </Menu.Item>
@@ -41,7 +48,7 @@ export default function UserButton() {
             Logout
           </button>
         </Menu.Item>
-      </Menu.Items> */}
+      </Menu.Items>
     </Menu>
   );
 }

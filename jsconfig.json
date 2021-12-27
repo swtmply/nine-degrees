@@ -7,7 +7,8 @@
       "@/lib/*": ["lib/*"],
       "@/fonts/*": ["fonts/*"],
       "@/hooks/*": ["hooks/*"],
-      "@/utils/*": ["utils/*"]
+      "@/utils/*": ["utils/*"],
+      "@/contexts/*": ["contexts/*"]
     }
   }
 }
