@@ -21,6 +21,7 @@ export default function ArticlePreview() {
   const [category] = useCategory;
   const [tags] = useTags;
   const [imagePreview] = useImagePreview;
+  const [image] = useImage;
 
   const rawContentState = JSON.parse(
     JSON.stringify(convertToRaw(editorState.getCurrentContent()))
@@ -33,19 +34,21 @@ export default function ArticlePreview() {
         <div className="col-span-full grid grid-cols-8 my-16 relative">
           <div className="col-span-6 col-start-2 flex flex-col justify-center items-center">
             <p className="bg-blue-600 text-white text-sm px-8 py-1 rounded font-bold uppercase">
-              {category.name}
+              {category.name || category}
             </p>
             <h2 className="font-bold text-5xl mt-8 text-center w-[1000px]">
               {formValues.title}
             </h2>
             <p className="font-mono font-bold mt-2">
-              By {session?.user?.name}{" "}
+              By {session?.user?.name}
               <span className="text-gray-400">5 hours ago</span>
             </p>
 
             <div className="col-span-full w-full aspect-[2/1] relative mt-20 bg-blue-200">
               <Image
-                src={imagePreview || "/assets/samples/article-poster.jpg"}
+                src={
+                  imagePreview || "/assets/samples/article-poster.jpg" || image
+                }
                 layout="fill"
                 objectFit="cover"
               />

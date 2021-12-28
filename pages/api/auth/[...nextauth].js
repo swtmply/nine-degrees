@@ -65,6 +65,7 @@ export default NextAuth({
   callbacks: {
     jwt: ({ token, user }) => {
       // TODO: return details of user to token
+
       if (user) {
         token.role = user.role;
         token.categories = user.categories;

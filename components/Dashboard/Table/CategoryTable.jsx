@@ -9,14 +9,14 @@ import LoadingBox from "components/Loaders/LoadingBox";
 import moment from "moment";
 import useArticles from "@/hooks/useArticles";
 
-export default function Table({ trash = false }) {
+export default function CategoryTable({ category, trash = false }) {
   const [searchFilter, setSearchFilter] = useState("");
   const [selectFilter, setSelectFilter] = useState("All");
-  const { data, isLoading } = useArticles();
+  const { data, isLoading } = useArticles("head", category);
   const [filteredArticles, setFilteredArticles] = useState(data?.articles);
   const [article, setArticle] = useState();
 
-  // Pagination component if ever
+  // TODO: Pagination component if ever
   const [isOpen, setIsOpen] = useState(false);
   const [pageNumber, setPageNumber] = useState(0);
   const articlePerPage = 20;
@@ -80,7 +80,7 @@ export default function Table({ trash = false }) {
           </tr>
         </thead>
         <tbody className="border-x-2 border-gray-200">
-          {/* change to filtered articles */}
+          {/* TODO: change to filtered articles */}
           {filteredArticles
             ?.filter((t) => {
               if (trash) return t.status === "Trash";

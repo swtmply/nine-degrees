@@ -7,12 +7,17 @@ import React, { useEffect, useState } from "react";
 const EICMenu = [
   { name: "Articles", value: "/admin" },
   { name: "Users", value: "/admin/users" },
+  { name: "Trash", value: "/admin/trash" },
 ];
 const HeadMenu = [
   { name: "Articles", value: "/admin" },
   { name: "Manage Team", value: "/admin/manage-team" },
+  { name: "Trash", value: "/admin/trash" },
 ];
-const WriterMenu = [{ name: "Articles", value: "/admin" }];
+const WriterMenu = [
+  { name: "Articles", value: "/admin" },
+  { name: "Trash", value: "/admin/trash" },
+];
 
 export default function AdminNavMenu() {
   const { data: session } = useSession();

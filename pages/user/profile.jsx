@@ -1,14 +1,14 @@
-import AdminHeader from "@/components/Dashboard/Header/AdminHeader";
-import Table from "@/components/Dashboard/Table/Table";
+import WriterHeader from "@/components/Dashboard/Header/WriterHeader";
+import WriterTable from "@/components/Dashboard/Table/WriterTable";
 import AdminLayout from "@/components/Layouts/AdminLayout";
 import React from "react";
 
 export default function Profile() {
   return (
     <AdminLayout>
-      <AdminHeader />
+      <WriterHeader />
 
-      <Table />
+      <WriterTable />
     </AdminLayout>
   );
 }

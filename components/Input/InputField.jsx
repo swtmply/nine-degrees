@@ -9,6 +9,7 @@ export default function InputField({
   onChange,
   formValues = {},
   label,
+  disabled,
 }) {
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -26,13 +27,14 @@ export default function InputField({
         {label}
       </label>
       <input
+        disabled={disabled}
         id={name}
         type={type}
         name={name}
         onChange={handleChange}
         value={isEmpty(formValues) ? value : formValues[name]}
         placeholder={placeholder}
-        className="outline-none py-3 px-2 text-lg rounded-md shadow-md"
+        className="outline-none py-3 px-2 text-lg rounded-md shadow-md disabled:bg-slate-200"
       />
     </div>
   );

@@ -6,9 +6,6 @@ import React from "react";
 export default function Users() {
   return (
     <AdminLayout>
-      {/* TODO: add all articles */}
-      <AdminHeader />
-
       {/* TODO: add all users */}
       <UsersTable />
     </AdminLayout>

@@ -2,10 +2,12 @@ import { Menu } from "@headlessui/react";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
 
 export default function UserButton() {
   const { data: session } = useSession();
+  const router = useRouter();
 
   return (
     <Menu as="div" className="relative self-end">
@@ -25,7 +27,7 @@ export default function UserButton() {
           </div>
         </div>
       </Menu.Button>
-      <Menu.Items className="absolute -bottom-36 shadow-lg bg-white space-y-2 w-full flex flex-col rounded-md p-2">
+      <Menu.Items className="absolute z-40 -bottom-36 shadow-lg bg-white space-y-2 w-full flex flex-col rounded-md p-2">
         <Menu.Item>
           <Link href={`/user/profile`}>
             <button className="py-1 hover:bg-yellow-300  rounded-md">
@@ -43,7 +45,13 @@ export default function UserButton() {
         <Menu.Item>
           <button
             className="py-1 hover:bg-yellow-300  rounded-md"
-            onClick={() => signOut()}
+            onClick={async () => {
+              const res = await signOut({
+                redirect: false,
+                callbackUrl: "/auth/login",
+              });
+              router.push(res.url);
+            }}
           >
             Logout
           </button>

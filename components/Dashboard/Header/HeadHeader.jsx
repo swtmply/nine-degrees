@@ -1,13 +1,13 @@
 import LoadingBox from "@/components/Loaders/LoadingBox";
-import useMyArticles from "@/hooks/useMyArticles";
+import useArticles from "@/hooks/useArticles";
 import { titles } from "@/lib/constants";
 import { statusLength } from "@/utils/index";
 import { useRouter } from "next/router";
 import React from "react";
 
-export default function WriterHeader() {
+export default function HeadHeader({ category }) {
   const router = useRouter();
-  const { data, isLoading } = useMyArticles();
+  const { data, isLoading } = useArticles("head", category);
 
   if (isLoading) return <LoadingBox />;
 

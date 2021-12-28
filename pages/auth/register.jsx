@@ -12,6 +12,10 @@ import { useMutation } from "react-query";
 import { Toaster, toast, resolveValue } from "react-hot-toast";
 import { Transition } from "@headlessui/react";
 import axios from "axios";
+import SelectInput from "@/components/Input/SelectInput";
+import { categoryList } from "@/lib/constants";
+import CheckboxInput from "@/components/Input/CheckboxInput";
+import { useRouter } from "next/router";
 
 export const createUser = async (data) => {
   return await axios.post("/api/auth/signup", data);
@@ -22,12 +26,21 @@ export default function Register() {
     name: "",
     email: "",
     password: "",
-    role: "",
+    socials: {
+      facebook: "",
+      twitter: "",
+      instagram: "",
+    },
   });
+  const [categories, setCategories] = useState([]);
+  const [role, setRole] = useState({ name: "Writer", value: "Writer" });
+  const router = useRouter();
 
   const mutation = useMutation(createUser, {
     onSuccess: (res) => {
       toast(res.data.message);
+
+      router.back();
     },
     onError: (err) => {
       toast("Email is already taken.");
@@ -37,15 +50,17 @@ export default function Register() {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    mutation.mutate(formValues);
+    // console.log({ formValues, categories, role: role.name });
+
+    mutation.mutate({ ...formValues, categories, role: role.name });
 
     e.target.reset();
   };
 
   return (
     <div className="w-full min-h-screen flex justify-center items-center">
-      <div className="bg-slate-100 p-4 flex flex-col rounded-md">
-        <Image src="/assets/logos/full-black.svg" width={150} height={200} />
+      <div className="bg-slate-200 p-4 flex flex-col rounded-md">
+        <h2 className="mb-3 font-bold text-2xl">Register User</h2>
         <form
           onSubmit={onSubmit}
           className="flex flex-col space-y-4 min-w-[500px]"
@@ -74,14 +89,21 @@ export default function Register() {
             onChange={setFormValues}
             formValues={formValues}
           />
-          <IconInputField
-            icon={InformationCircleIcon}
-            name="role"
-            type="text"
-            placeholder="Enter role... (Writer or Head)"
-            onChange={setFormValues}
-            formValues={formValues}
+          <SelectInput
+            selectItems={[
+              { name: "Writer", value: "Writer" },
+              { name: "Head", value: "Head" },
+            ]}
+            selected={role}
+            setSelected={setRole}
           />
+
+          <CheckboxInput
+            items={categoryList}
+            selectedCategories={categories}
+            setSelectedCategories={setCategories}
+          />
+
           <button
             disabled={mutation.isLoading}
             className="bg-black py-2 text-lg text-white font-bold rounded cursor-pointer hover:bg-opacity-70 disabled:bg-opacity-70 disabled:cursor-default"

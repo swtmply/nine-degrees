@@ -9,7 +9,7 @@ import StatusFilter from "../Filter/StatusFilter";
 import LoadingBox from "components/Loaders/LoadingBox";
 import moment from "moment";
 
-export default function WriterTable() {
+export default function WriterTable({ trash = false }) {
   const [searchFilter, setSearchFilter] = useState("");
   const [selectFilter, setSelectFilter] = useState("All");
   const { data, isLoading } = useMyArticles();
@@ -62,11 +62,6 @@ export default function WriterTable() {
   return (
     <div>
       <div className="h-16 py-8 my-6 rounded-md flex items-center space-x-4">
-        <StatusFilter
-          filter={selectFilter}
-          setFilter={setSelectFilter}
-          type="articles"
-        />
         <IconInputField
           icon={SearchIcon}
           value={searchFilter}
@@ -91,7 +86,12 @@ export default function WriterTable() {
         <tbody className="border-x-2 border-gray-200">
           {/* TODO: change to filtered articles */}
           {filteredArticles
-            ?.slice(pagesVisited, pagesVisited + articlePerPage)
+            ?.filter((t) => {
+              if (trash) return t.status === "Trash";
+
+              return t.status !== "Trash";
+            })
+            .slice(pagesVisited, pagesVisited + articlePerPage)
             .map((article, idx) => (
               <tr
                 onClick={() => {
@@ -175,12 +175,10 @@ export default function WriterTable() {
         breakClassName={"font-bold"}
         disabledClassName={"disabled"}
       />
-      {/* TODO: pass data to modal */}
       <TableDataDialog
         isOpen={isOpen}
         setIsOpen={setIsOpen}
-        articleId={article?._id}
-        articleStatus={article?.status}
+        article={article}
       />
     </div>
   );

@@ -2,14 +2,7 @@ import { Listbox } from "@headlessui/react";
 import { SelectorIcon } from "@heroicons/react/outline";
 import React, { useState } from "react";
 
-const articlesSelection = [
-  "All",
-  "Published",
-  "Approved",
-  "Pending",
-  "Draft",
-  "Trash",
-];
+const articlesSelection = ["All", "Published", "Approved", "Pending", "Draft"];
 const usersSelection = ["All", "Writer", "Head"];
 
 export default function StatusFilter({ filter, setFilter, type }) {

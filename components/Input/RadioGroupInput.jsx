@@ -13,7 +13,7 @@ export default function RadioGroupInput({
         <div className="px-2 space-y-4">
           {category?.subsection &&
             category?.subsection.map((sub) => (
-              <RadioGroup.Option key={sub.value} value={sub.value}>
+              <RadioGroup.Option key={sub.value} value={sub.name}>
                 {({ checked }) => (
                   <div className="flex items-center space-x-4">
                     <div

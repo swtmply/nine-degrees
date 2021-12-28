@@ -20,11 +20,13 @@ export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
     <div className="flex flex-col">
       <div className={`${type === "stack" && "flex flex-wrap"}`}>
         {items
+          ?.filter((t) => t.status === "Published")
           .slice(pagesVisited, pagesVisited + itemsPerPage)
-          .map((_, idx) => {
-            if (type === "spread") return <ArticlesSpread key={idx} />;
+          .map((article, idx) => {
+            if (type === "spread")
+              return <ArticlesSpread article={article} key={idx} />;
 
-            return <ArticlesStack key={idx} />;
+            return <ArticlesStack article={article} key={idx} />;
           })}
       </div>
       <ReactPaginate
