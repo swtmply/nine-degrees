@@ -18,17 +18,17 @@ export default function ArticlesStack({ article }) {
       data-aos="fade-up"
       className="flex mb-72 mr-4 relative cursor-pointer group"
     >
-      <Link href={`/articles/$${article._id}`}>
+      <Link href={`/articles/${article._id}`}>
         <div>
           <div className="relative bg-slate-500 w-[550px] aspect-[1.43/1]">
             <Image
               src={article.image}
               layout="fill"
               objectFit="cover"
-              className="group-hover:scale-125"
+              className="transition-transform group-hover:scale-125"
             />
           </div>
-          <div className="absolute ml-auto mr-auto left-0 right-0 -bottom-64 flex flex-col justify-center items-center text-center bg-stone-200 rounded-lg p-4 w-[95%]">
+          <div className="absolute min-h-[20rem] max-h-80 ml-auto mr-auto left-0 right-0 -bottom-64 mb-8 flex flex-col justify-center items-center text-center bg-stone-200 rounded-lg p-4 w-[95%]">
             <p
               className={`absolute -top-4 ${categoryColor(
                 article.category
@@ -36,9 +36,9 @@ export default function ArticlesStack({ article }) {
             >
               {article.subsection}
             </p>
-            <h2 className="font-bold text-3xl mt-8">{article.title}</h2>
+            <h2 className="font-bold text-3xl">{article.title}</h2>
             <p className="font-mono font-bold mt-2">
-              By {article.writer}
+              By {article.writer}{" "}
               <span className="text-gray-400">
                 {moment(article.createdAt).startOf("hour").fromNow()}
               </span>

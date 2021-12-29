@@ -17,7 +17,7 @@ export default function ArticlePage({ article }) {
   const { data, isLoading } = useArticles("head", article.category);
 
   return (
-    <ClientLayout>
+    <ClientLayout category={article.category}>
       <main className="col-span-full grid grid-cols-12">
         <div className="col-span-full grid grid-cols-8 my-16 relative">
           <div className="col-span-6 col-start-2 flex flex-col justify-center items-center">
@@ -136,12 +136,11 @@ export async function getStaticProps({ params }) {
 
   const article = await Articles.findById(params.articleId);
 
-  if (article)
-    return {
-      props: {
-        article: JSON.parse(JSON.stringify(article)),
-      },
-      // revalidate data every 10 seconds
-      revalidate: 10,
-    };
+  return {
+    props: {
+      article: JSON.parse(JSON.stringify(article)),
+    },
+    // revalidate data every 10 seconds
+    revalidate: 10,
+  };
 }

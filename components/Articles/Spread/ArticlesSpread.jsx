@@ -46,7 +46,7 @@ export default function ArticlesSpread({ article }) {
             </p>
             <h2 className="font-bold text-3xl mt-8">{article.title}</h2>
             <p className="font-mono font-bold mt-2">
-              By: {article.writer}
+              By: {article.writer}{" "}
               <span className="text-gray-400">
                 {moment(article.createdAt).startOf("hour").fromNow()}
               </span>

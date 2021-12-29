@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  @font-face {
+    font-family: "Helvetica";
+    font-weight: 500;
+    src: url("/fonts/Helvetica.otf") format("otf");
+  }
+  @font-face {
+    font-family: "Helvetica";
+    font-weight: 700;
+    src: url("/fonts/Helvetica Bold.ttf") format("ttf");
+  }
+  @font-face {
+    font-family: "Helvetica";
+    font-weight: 900;
+    src: url("/fonts/Helvetica Black.otf") format("otf");
+  }
+  @font-face {
+    font-family: Roboto Mono;
+    src: url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap");
+  }
+}
+
 /* Swiper styles */
 
 .custom-scrollbar::-webkit-scrollbar {
@@ -98,6 +120,7 @@
 
 .markup > p > span {
   font-size: 1.5rem !important;
+  font-family: "Helvetica", sans-serif !important;
 }
 
 .markup > p > span > strong {

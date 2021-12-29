@@ -4,15 +4,12 @@ import ClientLayout from "@/components/Layouts/ClientLayout";
 import PaginatedArticles from "@/components/PaginatedArticles/PaginatedArticles";
 import { categoryList } from "@/lib/constants";
 import Articles from "@/models/Articles";
-import { useRouter } from "next/router";
 import mongoDBConnect from "lib/mongoDBConnect";
 import React from "react";
 
-export default function SubsectionPage({ articles }) {
-  const router = useRouter();
-
+export default function SubsectionPage({ articles, category }) {
   return (
-    <ClientLayout>
+    <ClientLayout category={category}>
       <main className="col-span-full grid grid-cols-12">
         <HorizontalAd />
 
@@ -65,6 +62,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       articles: JSON.parse(JSON.stringify(articles.reverse())),
+      category: category.name,
     },
     // revalidate data every 10 seconds
     revalidate: 10,
