@@ -31,7 +31,7 @@ export default function AdminArticlePreview({ article }) {
           <div className="col-span-full grid grid-cols-8 my-16 relative">
             <div className="col-span-5 col-start-2">
               <div
-                className="mt-5"
+                className="mt-5 prose-xl markup"
                 dangerouslySetInnerHTML={{
                   __html: markup,
                 }}
