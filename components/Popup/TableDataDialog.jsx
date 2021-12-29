@@ -26,6 +26,21 @@ export default function TableDataDialog({ isOpen, setIsOpen, article }) {
     }
   );
 
+  const { isSuccess: successDelete, mutate: mutateDelete } = useMutation(
+    async () => {
+      return await axios.delete(`/api/articles/${article._id}`);
+    },
+    {
+      onSuccess: (res) => {
+        toast(res.data.message);
+        window.location.reload();
+      },
+      onError: () => {
+        toast("Something went wrong.");
+      },
+    }
+  );
+
   return (
     <Transition
       show={isOpen}
@@ -45,16 +60,33 @@ export default function TableDataDialog({ isOpen, setIsOpen, article }) {
           <Dialog.Overlay className="fixed inset-0 bg-black opacity-30" />
 
           <div className="relative bg-slate-100 rounded py-4">
-            <Dialog.Title className="font-bold text-2xl flex flex-col px-4">
-              <span className="text-sm text-slate-400">
-                Article ID: {article?._id}
-              </span>
-              <span>Edit Article</span>
+            <Dialog.Title className="font-bold text-2xl flex justify-between px-4">
+              <div className="flex flex-col">
+                <span className="text-sm text-slate-400">
+                  Article ID: {article?._id}
+                </span>
+                <span>Edit Article</span>
+              </div>
+              <button
+                onClick={() =>
+                  router.push(`/user/articles/${article._id}/preview`)
+                }
+                className="flex items-center text-slate-700 border border-slate-400 rounded-md px-2 py-1 h-full font-semibold gap-2"
+              >
+                <EyeIcon className="w-6 h-6" />
+                <span>Preview</span>
+              </button>
             </Dialog.Title>
 
             <Dialog.Description className="space-y-3 mt-5 flex flex-col">
-              {/* TODO: add role specific functions  */}
-              {session?.user?.role === "Writer" ? (
+              {article?.status === "Trash" ? (
+                <TrashEdit
+                  article={article}
+                  router={router}
+                  mutate={mutate}
+                  mutateDelete={mutateDelete}
+                />
+              ) : session?.user?.role === "Writer" ? (
                 <WriterEdit article={article} router={router} mutate={mutate} />
               ) : (
                 <HeadEdit article={article} router={router} mutate={mutate} />
@@ -66,7 +98,7 @@ export default function TableDataDialog({ isOpen, setIsOpen, article }) {
                   appear
                   show={t.visible}
                   className={`${
-                    isSuccess
+                    isSuccess || successDelete
                       ? "bg-green-100 border-green-400"
                       : "bg-red-100 border-red-400"
                   } cursor-texttransform p-4 rounded shadow-lg border-t-4`}
@@ -159,6 +191,35 @@ const filterButtons = [
 ];
 
 import InputField from "components/Input/InputField";
+import { EyeIcon } from "@heroicons/react/outline";
+
+const TrashEdit = ({ article, mutate, mutateDelete }) => {
+  const handleStatusChange = (status) => {
+    mutate({ status });
+  };
+
+  return (
+    <div className="flex flex-col">
+      <p className="self-start px-4 mb-2 mt-5 font-bold text-xl">Actions</p>
+      <div className="flex items-center px-4 flex-wrap gap-2 max-w-lg ">
+        <button
+          onClick={() => handleStatusChange("Draft")}
+          className={`bg-green-500 py-2 px-4 text-white rounded-md font-bold flex space-x-2`}
+        >
+          <PencilAltIcon className="w-6 h-6" />
+          <span>Recover Article</span>
+        </button>
+        <button
+          onClick={() => mutateDelete()}
+          className={`bg-red-500 py-2 px-4 text-white rounded-md font-bold flex space-x-2`}
+        >
+          <TrashIcon className="w-6 h-6" />
+          <span>Delete Permanently</span>
+        </button>
+      </div>
+    </div>
+  );
+};
 
 const HeadEdit = ({ article, router, mutate }) => {
   const handleStatusChange = (status) => {

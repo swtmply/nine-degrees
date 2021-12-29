@@ -4,6 +4,19 @@
 
 /* Swiper styles */
 
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0.6vw;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #7775;
+  border-radius: 16px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(144, 144, 144);
+}
+
 .swiper-pagination {
   text-align: left !important;
   padding-left: 1rem !important;
@@ -81,6 +94,36 @@
 .rti--input:focus {
   outline: none !important;
   border: none !important;
+}
+
+.markup > p > span {
+  font-size: 1.5rem !important;
+}
+
+.markup > p > span > strong {
+  font-size: 2rem !important;
+}
+
+ins {
+  font-size: 1.5rem !important;
+  color: #4100fa;
+}
+
+*::-webkit-scrollbar {
+  width: 0.6vw;
+  cursor: pointer;
+  /*background-color: rgba(229, 231, 235, var(--bg-opacity));*/
+}
+*::-webkit-scrollbar-track {
+  background-color: rgba(229, 231, 235, var(--bg-opacity));
+  cursor: pointer;
+  /*background: red;*/
+}
+
+*::-webkit-scrollbar-thumb {
+  cursor: pointer;
+  background-color: #a0aec0;
+  /*outline: 1px solid slategrey;*/
 }
 
 /* Laura */

@@ -9,5 +9,6 @@ module.exports = {
   plugins: [
     require("tailwind-scrollbar-hide"),
     require("@tailwindcss/line-clamp"),
+    require("@tailwindcss/typography"),
   ],
 };

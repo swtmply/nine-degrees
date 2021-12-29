@@ -8,6 +8,7 @@ import LoadingBox from "components/Loaders/LoadingBox";
 import useUsers from "@/hooks/useUsers";
 import { PencilAltIcon, TrashIcon } from "@heroicons/react/solid";
 import { useRouter } from "next/router";
+import UsersTableDialog from "@/components/Popup/UsersTableDialog";
 
 export default function UsersTable({ category, user }) {
   const [searchFilter, setSearchFilter] = useState("");
@@ -15,6 +16,8 @@ export default function UsersTable({ category, user }) {
   const { data, isLoading } = useUsers("head", category);
   const [filteredArticles, setFilteredArticles] = useState(data?.users);
   const router = useRouter();
+  const [isOpen, setIsOpen] = useState(false);
+  const [userState, setUserState] = useState();
 
   const [pageNumber, setPageNumber] = useState(0);
   const articlePerPage = 20;
@@ -94,36 +97,41 @@ export default function UsersTable({ category, user }) {
         <tbody className="border-x-2 border-gray-200">
           {filteredArticles
             ?.slice(pagesVisited, pagesVisited + articlePerPage)
-            .map((article, idx) => (
+            .map((user, idx) => (
               <tr
                 key={idx}
                 className="border-b border-gray-100 even:bg-gray-100 hover:bg-gray-200"
               >
                 <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
-                  {article.name}
+                  {user.name}
                 </td>
                 <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
-                  {article.email}
+                  {user.email}
                 </td>
                 <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
-                  {article.role}
+                  {user.role}
                 </td>
                 <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
                   <div className="truncate w-40">
-                    {article.categories.map((t, i) => (
+                    {user.categories.map((t, i) => (
                       <span key={i}>
                         {t}
-                        {i !== article.categories.length - 1 && ", "}
+                        {i !== user.categories.length - 1 && ", "}
                       </span>
                     ))}
                   </div>
                 </td>
                 <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate space-x-4">
-                  <button onClick={() => router.push(`/user/${article?._id}`)}>
+                  <button onClick={() => router.push(`/user/${user?._id}`)}>
                     <PencilAltIcon className="w-6 h-6" />
                   </button>
 
-                  <button>
+                  <button
+                    onClick={() => {
+                      setIsOpen(true);
+                      setUserState(user);
+                    }}
+                  >
                     <TrashIcon className="w-6 h-6" />
                   </button>
                 </td>
@@ -151,6 +159,11 @@ export default function UsersTable({ category, user }) {
         activeClassName={"active text-white"}
         breakClassName={"font-bold"}
         disabledClassName={"disabled"}
+      />
+      <UsersTableDialog
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        user={userState}
       />
     </div>
   );

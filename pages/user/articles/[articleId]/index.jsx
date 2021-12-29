@@ -6,7 +6,7 @@ import { ArticleFieldsProvider } from "contexts/ArticleFieldsContext";
 import { useRouter } from "next/router";
 import { useQuery } from "react-query";
 
-const fetchArticle = async (id) => {
+export const fetchArticle = async (id) => {
   return await axios.get(`/api/articles/${id}`).then((res) => res.data);
 };
 

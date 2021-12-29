@@ -36,5 +36,14 @@ export default async function handler(req, res) {
       } catch (error) {
         return res.status(400).json({ message: "Failed to fetch user" });
       }
+    case "DELETE":
+      try {
+        const user = await Users.findOneAndDelete({ _id: id });
+
+        if (user) res.status(200).json({ message: "User has been deleted" });
+      } catch (error) {
+        return res.status(400).json({ message: "Couldn't delete user" });
+      }
+      break;
   }
 }
