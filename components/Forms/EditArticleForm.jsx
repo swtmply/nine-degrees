@@ -113,7 +113,7 @@ export default function EditArticleForm({ article }) {
         <button
           disabled={isLoading}
           onClick={handleSubmit}
-          className="bg-blue-600 px-8 py-2 text-lg text-white font-bold rounded disabled:bg-blue-300 disabled:cursor-default hover:bg-blue-700"
+          className="bg-padeepBlue px-8 py-2 text-lg text-white font-bold rounded disabled:bg-blue-300 disabled:cursor-default hover:bg-blue-700"
         >
           {isLoading ? "Saving..." : "Save"}
         </button>

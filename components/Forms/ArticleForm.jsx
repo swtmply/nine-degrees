@@ -25,6 +25,7 @@ export default function ArticleForm() {
     useCategory,
     useSubsection,
     useTags,
+    useImagePreview,
   } = useContext(ArticleFieldsContext);
   const router = useRouter();
 
@@ -35,6 +36,7 @@ export default function ArticleForm() {
   const [category, setCategory] = useCategory;
   const [subsection, setSubsection] = useSubsection;
   const [tags, setTags] = useTags;
+  const [imagePreview, setImagePreview] = useImagePreview;
 
   const { isLoading, isSuccess, mutate } = useMutation(
     async (data) => {
@@ -43,6 +45,8 @@ export default function ArticleForm() {
     {
       onSuccess: (res) => {
         toast(res.data.message);
+        setImagePreview(null);
+        window.location.reload();
       },
       onError: () => {
         toast("Something went wrong.");
@@ -63,8 +67,6 @@ export default function ArticleForm() {
     formValues.writer = session?.user?.name;
 
     mutate(formValues);
-
-    if (isSuccess) window.location.reload();
     // console.log(formValues);
   };
 
@@ -96,6 +98,7 @@ export default function ArticleForm() {
         <button
           className="text-slate-500 font-bold text-lg mr-2"
           onClick={() => {
+            setImagePreview(null);
             router.back();
           }}
         >
@@ -104,7 +107,7 @@ export default function ArticleForm() {
         <button
           disabled={isLoading}
           onClick={handleSubmit}
-          className="bg-blue-600 px-8 py-2 text-lg text-white font-bold rounded disabled:bg-blue-300 disabled:cursor-default hover:bg-blue-700"
+          className="bg-padeepBlue px-8 py-2 text-lg text-white font-bold rounded disabled:bg-blue-300 disabled:cursor-default hover:bg-blue-700"
         >
           {isLoading ? "Saving..." : "Save"}
         </button>

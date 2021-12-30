@@ -9,12 +9,22 @@ import draftToHtml from "draftjs-to-html";
 import ArticleSwiper from "@/components/Swipers/ArticleSwiper";
 import useArticles from "@/hooks/useArticles";
 import LoadingBox from "@/components/Loaders/LoadingBox";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 export default function ArticlePage({ article }) {
   const rawContentState = JSON.parse(article?.body);
   const markup = draftToHtml(rawContentState, {});
 
   const { data, isLoading } = useArticles("head", article.category);
+  const { data: user, isLoading: userLoading } = useQuery(
+    ["user", article?.writer],
+    async () => {
+      return await axios
+        .get(`/api/users?name=${article.writer}`)
+        .then((res) => res.data);
+    }
+  );
 
   return (
     <ClientLayout category={article.category}>
@@ -60,30 +70,32 @@ export default function ArticlePage({ article }) {
               </div>
 
               <div className="flex gap-4 max-w-[70%] max-h-min relative">
-                {/* TODO: get writer info */}
-                <Image
-                  src="/assets/cover-story-bg.png"
-                  layout="fill"
-                  objectFit="cover"
-                />
-                <div className="w-[100px] aspect-square relative ">
-                  <Image
-                    src="/assets/samples/PUBMAT SAMPLE.jpg"
-                    layout="fill"
-                    objectFit="cover"
-                  />
-                </div>
-                <div className="flex flex-col w-full justify-center">
-                  <p className="font-mono text-lg font-bold">
-                    Sheldeen Joy Talavera
-                  </p>
-                  <p className="text-gray-400">
-                    Sheldeen is a writer who loves to watch series and to play
-                    with her dogs in her free time — ways to pause and take a
-                    break. She also aims to write to advocate for animal welfare
-                    and rights.
-                  </p>
-                </div>
+                {userLoading ? (
+                  <LoadingBox />
+                ) : (
+                  <>
+                    <Image
+                      src="/assets/cover-story-bg.png"
+                      layout="fill"
+                      objectFit="cover"
+                    />
+                    <div className="w-[100px] aspect-square relative ">
+                      <Image
+                        src={
+                          user.user.image || "/assets/samples/PUBMAT SAMPLE.jpg"
+                        }
+                        layout="fill"
+                        objectFit="cover"
+                      />
+                    </div>
+                    <div className="flex flex-col w-full justify-center">
+                      <p className="font-mono text-lg font-bold">
+                        {user?.user.name}
+                      </p>
+                      <p className="text-gray-400">{user.user.bio}</p>
+                    </div>
+                  </>
+                )}
               </div>
             </div>
             <VerticalAd />

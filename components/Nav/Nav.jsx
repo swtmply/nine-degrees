@@ -43,7 +43,7 @@ export default function Nav() {
         </Link>
       ) : (
         <Link href="/">
-          <HomeIcon className="w-8 h-8 hover:text-yellow-300 cursor-pointer" />
+          <HomeIcon className="w-8 h-8 hover:text-yellowwallow cursor-pointer" />
         </Link>
       )}
 
@@ -62,9 +62,9 @@ export default function Nav() {
 
       <button onClick={() => setSearchState(!searchState)}>
         {searchState ? (
-          <XIcon className="w-8 h-8 hover:text-yellow-300 cursor-pointer" />
+          <XIcon className="w-8 h-8 hover:text-yellowwallow cursor-pointer" />
         ) : (
-          <SearchIcon className="w-8 h-8 hover:text-yellow-300 cursor-pointer" />
+          <SearchIcon className="w-8 h-8 hover:text-yellowwallow cursor-pointer" />
         )}
       </button>
     </div>

@@ -26,11 +26,12 @@ export default function EditMeForm({ user }) {
 
   const { useImagePreview, useImage } = useContext(ArticleFieldsContext);
   const [image, setImage] = useImage;
-  const [imagePreview] = useImagePreview;
+  const [imagePreview, setImagePreview] = useImagePreview;
 
   const { mutate, isSuccess, isLoading } = useMutation(updateUser, {
     onSuccess: (res) => {
       toast("User update Successfully");
+      setImagePreview(null);
       window.location.reload();
     },
     onError: (err) => {
@@ -66,7 +67,7 @@ export default function EditMeForm({ user }) {
   };
 
   return (
-    <div>
+    <div className="col-span-6 col-start-4">
       <Toaster>
         {(t) => (
           <Transition
@@ -101,7 +102,7 @@ export default function EditMeForm({ user }) {
           />
         </div>
 
-        <div className="w-[50%]">
+        <div className="w-[100%]">
           <InputField
             label="Name"
             placeholder="Enter name"
@@ -128,10 +129,10 @@ export default function EditMeForm({ user }) {
             setFormValues={setFormValues}
           />
         </div>
-        <div className="w-[50%]">
+        <div className="w-[100%]">
           <ImageInput image={image} setImage={setImage} />
         </div>
-        <div className="w-[50%]">
+        <div className="w-[100%]">
           <InputField
             label="Facebook"
             placeholder="Facebook Link"
@@ -166,7 +167,7 @@ export default function EditMeForm({ user }) {
           <button
             // disabled={isLoading}
             onClick={handleSubmit}
-            className="bg-blue-600 px-8 py-2 text-lg text-white font-bold rounded disabled:bg-blue-300 disabled:cursor-default hover:bg-blue-700"
+            className="bg-padeepBlue px-8 py-2 text-lg text-white font-bold rounded disabled:bg-blue-300 disabled:cursor-default hover:bg-blue-700"
           >
             {/* {isLoading ? "Saving..." : "Save"} */}
             Save

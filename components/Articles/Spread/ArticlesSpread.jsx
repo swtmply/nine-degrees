@@ -10,15 +10,15 @@ import Link from "next/link";
 export const categoryColor = (category) => {
   switch (category) {
     case "News":
-      return "bg-blue-600";
+      return "bg-padeepBlue";
     case "Features":
-      return "bg-pink-400";
+      return "bg-confusedPurple";
     case "Community":
-      return "bg-red-400";
+      return "bg-redtagging";
     case "Cultures & Lifestyle":
-      return "bg-yellow-400";
+      return "bg-yellowwallow";
     case "So Lit!":
-      return "bg-green-500";
+      return "bg-degreen";
   }
 };
 

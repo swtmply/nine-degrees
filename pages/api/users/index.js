@@ -3,7 +3,7 @@ import mongoDBConnect from "@/lib/mongoDBConnect";
 
 export default async function handler(req, res) {
   const {
-    query: { category },
+    query: { category, name },
   } = req;
   mongoDBConnect();
 
@@ -11,6 +11,11 @@ export default async function handler(req, res) {
     if (category) {
       const users = await Users.find({ categories: category });
       if (users) return res.status(200).json({ users: users.reverse() });
+    }
+
+    if (name) {
+      const user = await Users.findOne({ name });
+      if (user) return res.status(200).json({ user });
     }
 
     const users = await Users.find({});

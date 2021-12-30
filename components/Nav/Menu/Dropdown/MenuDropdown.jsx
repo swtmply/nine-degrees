@@ -43,7 +43,7 @@ export default function MenuDropdown({ title, items }) {
           <Menu.Button
             ref={menuRef}
             className={`${
-              open && "text-yellow-300"
+              open && "text-yellowwallow"
             } uppercase font-bold outline-none cursor-pointer`}
             onMouseEnter={() => {
               onHover(open, "onMouseEnter");
@@ -64,7 +64,7 @@ export default function MenuDropdown({ title, items }) {
             <div
               className={`${
                 title.value === "so-lit" && "hidden"
-              } bg-yellow-300 px-4 py-8 rounded-md`}
+              } bg-yellowwallow px-4 py-8 rounded-md`}
             >
               {items?.map((subsection, idx) => {
                 return (

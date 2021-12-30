@@ -12,8 +12,8 @@ export default function VerticalAd() {
           <XCircleIcon className="w-12 h-12" />
         </div>
       </div>
-      <div className="w-[200px] h-[400px] bg-yellow-300 mb-4"></div>
-      <div className="w-[200px] h-[600px] bg-yellow-300"></div>
+      <div className="w-[200px] h-[400px] bg-yellowwallow mb-4"></div>
+      <div className="w-[200px] h-[600px] bg-yellowwallow"></div>
     </div>
   );
 }

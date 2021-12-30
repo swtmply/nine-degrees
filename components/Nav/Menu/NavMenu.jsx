@@ -16,7 +16,7 @@ export default function NavMenu() {
     >
       <div
         className={`${
-          !inView ? "bg-black text-white" : "bg-yellow-300"
+          !inView ? "bg-black text-white" : "bg-yellowwallow"
         } pointer-events-auto col-span-6 col-start-2 h-[4.5rem] rounded-lg self-center group hover:bg-black transition-colors duration-200 flex px-32 items-center justify-between`}
       >
         {categoryList.map((category, idx) => (

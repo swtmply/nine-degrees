@@ -29,7 +29,7 @@ export default function Search() {
         placeholder="Search something..."
       />
       {filteredArticles.length !== 0 && (
-        <div className="absolute max-h-[70vh] w-full top-0 mt-16 z-50 bg-yellow-300 rounded overflow-y-scroll">
+        <div className="absolute max-h-[70vh] w-full top-0 mt-16 z-50 bg-yellowwallow rounded overflow-y-scroll">
           {filteredArticles
             .filter((t) => t.status === "Published")
             .map((article) => {

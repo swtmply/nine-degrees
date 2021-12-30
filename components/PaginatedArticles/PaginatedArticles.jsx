@@ -8,7 +8,9 @@ export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
   const articlePerPage = itemsPerPage;
   const pagesVisited = pageNumber * articlePerPage;
 
-  const pageCount = Math.ceil(items.length / articlePerPage);
+  const pageCount = Math.ceil(
+    items?.filter((t) => t.status === "Published").length / articlePerPage
+  );
 
   const handlePageClick = (e) => {
     const selectedPage = e.selected;

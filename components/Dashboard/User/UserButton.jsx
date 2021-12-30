@@ -10,8 +10,8 @@ export default function UserButton() {
   const router = useRouter();
 
   return (
-    <Menu as="div" className="relative self-end">
-      <Menu.Button>
+    <Menu as="div" className="relative col-span-full grid grid-cols-5">
+      <Menu.Button className="col-span-2 col-start-6">
         <div className="flex space-x-2">
           <div className="flex flex-col items-end justify-center">
             <p className="font-bold text-lg">{session?.user.name}</p>
@@ -27,7 +27,7 @@ export default function UserButton() {
           </div>
         </div>
       </Menu.Button>
-      <Menu.Items className="absolute z-40 -bottom-36 shadow-lg bg-white space-y-2 w-full flex flex-col rounded-md p-2">
+      <Menu.Items className="absolute z-40 -bottom-36 shadow-lg bg-white space-y-2 w-full col-start-6 flex flex-col rounded-md p-2">
         <Menu.Item>
           <Link href={`/user/profile`}>
             <button className="py-1 hover:bg-yellow-300  rounded-md">

@@ -57,8 +57,8 @@ export default function UsersTable({ category, user }) {
   if (isLoading) return <LoadingBox />;
 
   return (
-    <div>
-      <div className="h-16 py-8 my-6 rounded-md flex justify-between items-center space-x-4">
+    <div className="col-span-full grid grid-cols-2">
+      <div className="h-16 py-8 my-6 rounded-md flex items-center space-x-4 col-span-full">
         <div className="flex gap-2">
           <StatusFilter
             filter={selectFilter}
@@ -80,73 +80,62 @@ export default function UsersTable({ category, user }) {
           Create User +
         </button>
       </div>
-      <table className="w-full table-auto">
-        <thead className="border-2 border-gray-200 bg-slate-200 sticky -top-8">
-          <tr>
-            {usersTableHeaders.map((th, idx) => (
-              <td
-                key={idx}
-                className="font-bold text-lg py-4 px-3 uppercase text-slate-700 tracking-wide"
-              >
-                {th}
+      <div className="bg-white p-4 w-full col-span-full">
+        <div className="grid grid-cols-5 border-2 border-gray-200 bg-slate-200 sticky -top-8">
+          {usersTableHeaders.map((th, idx) => (
+            <td
+              key={idx}
+              className="font-bold text-lg py-4 px-3 uppercase text-slate-700 tracking-wide"
+            >
+              {th}
+            </td>
+          ))}
+        </div>
+        {filteredArticles
+          ?.slice(pagesVisited, pagesVisited + articlePerPage)
+          .map((user, idx) => (
+            <tr
+              key={idx}
+              className="grid grid-cols-5 border-b border-gray-100 even:bg-gray-100 hover:bg-gray-200"
+            >
+              <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
+                {user.name}
               </td>
-            ))}
-            <td className="font-bold text-lg py-4 px-3 uppercase text-slate-700 tracking-wide"></td>
-          </tr>
-        </thead>
-        <tbody className="border-x-2 border-gray-200">
-          {filteredArticles
-            ?.slice(pagesVisited, pagesVisited + articlePerPage)
-            .map((user, idx) => (
-              <tr
-                key={idx}
-                className="border-b border-gray-100 even:bg-gray-100 hover:bg-gray-200"
-              >
-                <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
-                  {user.name}
-                </td>
-                <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
-                  {user.email}
-                </td>
-                <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
-                  {user.role}
-                </td>
-                <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
-                  <div className="truncate w-40">
-                    {user.categories.map((t, i) => (
-                      <span key={i}>
-                        {t}
-                        {i !== user.categories.length - 1 && ", "}
-                      </span>
-                    ))}
-                  </div>
-                </td>
-                <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate space-x-4">
-                  <button onClick={() => router.push(`/user/${user?._id}`)}>
-                    <PencilAltIcon className="w-6 h-6" />
-                  </button>
+              <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
+                {user.email}
+              </td>
+              <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
+                {user.role}
+              </td>
+              <td className="text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate">
+                <div className="truncate w-40">
+                  {user.categories.map((t, i) => (
+                    <span key={i}>
+                      {t}
+                      {i !== user.categories.length - 1 && ", "}
+                    </span>
+                  ))}
+                </div>
+              </td>
+              <td className="justify-self-center text-lg text-slate-700 max-w-[300px] py-3 px-3 truncate space-x-4">
+                <button onClick={() => router.push(`/user/${user?._id}`)}>
+                  <PencilAltIcon className="w-6 h-6" />
+                </button>
 
-                  <button
-                    onClick={() => {
-                      setIsOpen(true);
-                      setUserState(user);
-                    }}
-                  >
-                    <TrashIcon className="w-6 h-6" />
-                  </button>
-                </td>
-              </tr>
-            ))}
-          {/* Filler Row */}
-          <tr className="bg-slate-200 border-2 border-gray-200 py-4 h-12">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
+                <button
+                  onClick={() => {
+                    setIsOpen(true);
+                    setUserState(user);
+                  }}
+                >
+                  <TrashIcon className="w-6 h-6" />
+                </button>
+              </td>
+            </tr>
+          ))}
+        {/* Filler Row */}
+        <div className="bg-slate-200 border-2 border-gray-200 py-4 h-12"></div>
+      </div>
       <ReactPaginate
         previousLabel={"Previous"}
         nextLabel={"Next"}
