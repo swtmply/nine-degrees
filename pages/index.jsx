@@ -1,21 +1,24 @@
 import HorizontalAd from "@/components/Ads/HorizontalAd";
 import VerticalAd from "@/components/Ads/VerticalAd";
 import ClientLayout from "@/components/Layouts/ClientLayout";
+import SpreadLoading from "@/components/Loaders/SpreadLoading";
+import SwipeLoading from "@/components/Loaders/SwipeLoading";
 import PaginatedArticles from "@/components/PaginatedArticles/PaginatedArticles";
 import ArticleSwiper from "@/components/Swipers/ArticleSwiper";
 import useArticles from "@/hooks/useArticles";
-import LoadingBox from "components/Loaders/LoadingBox";
 
 export default function Home() {
   const { data, isLoading } = useArticles();
-
-  if (isLoading) return <LoadingBox />;
 
   return (
     <ClientLayout>
       <main className="col-span-full grid grid-cols-12">
         <div className="col-span-10 col-start-2">
-          <ArticleSwiper articles={data.articles} />
+          {isLoading ? (
+            <SwipeLoading />
+          ) : (
+            <ArticleSwiper articles={data.articles} />
+          )}
         </div>
 
         <HorizontalAd />
@@ -25,7 +28,11 @@ export default function Home() {
             <h2 className="uppercase font-black text-3xl tracking-widest mb-5">
               Latest
             </h2>
-            <PaginatedArticles items={data.articles} type="spread" />
+            {isLoading ? (
+              <SpreadLoading />
+            ) : (
+              <PaginatedArticles items={data.articles} type="spread" />
+            )}
           </div>
           <VerticalAd />
         </div>
