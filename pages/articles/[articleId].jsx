@@ -17,7 +17,7 @@ import Head from "next/head";
 export default function ArticlePage({ article }) {
   const firstBlock = convertFromRaw(JSON.parse(article.body)).getFirstBlock();
   const rawContentState = JSON.parse(article?.body);
-  const markup = draftToHtml(rawContentState, {});
+  const markup = draftToHtml(rawContentState);
 
   const { data, isLoading } = useArticles("head", article.category);
   const { data: user, isLoading: userLoading } = useQuery(
