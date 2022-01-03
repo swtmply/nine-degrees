@@ -11,8 +11,11 @@ import useArticles from "@/hooks/useArticles";
 import LoadingBox from "@/components/Loaders/LoadingBox";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { convertFromRaw } from "draft-js";
+import Head from "next/head";
 
 export default function ArticlePage({ article }) {
+  const firstBlock = convertFromRaw(JSON.parse(article.body)).getFirstBlock();
   const rawContentState = JSON.parse(article?.body);
   const markup = draftToHtml(rawContentState, {});
 
@@ -28,6 +31,20 @@ export default function ArticlePage({ article }) {
 
   return (
     <ClientLayout category={article.category}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+        <meta name="description" content={firstBlock.getText()} />
+
+        <meta property="og:image" content={article.image} key="ogimage" />
+        <meta property="og:title" content={article.title} key="ogtitle" />
+        <meta
+          property="og:description"
+          content={firstBlock.getText()}
+          key="ogdesc"
+        />
+        <title>{article.title}</title>
+      </Head>
       <main className="col-span-full grid grid-cols-12">
         <div className="col-span-full grid grid-cols-8 my-16 relative">
           <div className="col-span-6 col-start-2 flex flex-col justify-center items-center">
