@@ -9,7 +9,7 @@ export default function HeadHeader({ category }) {
   const router = useRouter();
   const { data, isLoading } = useArticles("head", category);
 
-  if (isLoading) return <LoadingBox />;
+  if (isLoading) return <></>;
 
   return (
     <div className="grid grid-cols-6 gap-4 mt-8 col-span-full">
@@ -44,7 +44,7 @@ export default function HeadHeader({ category }) {
 
       <div className="flex flex-col bg-white p-4 col-span-3 col-start-5 h-40 mb-2 rounded-md">
         <div className="flex flex-col items-end">
-          <p className="font-bold text-2xl mb-3">Good day, bhie!</p>
+          <p className="font-bold text-2xl mb-1">Good day, bhie!</p>
           <p className="text-base text-right leading-5 mb-2">
             Feeling motivated to inspire Bernadette and Jonathan today?
           </p>

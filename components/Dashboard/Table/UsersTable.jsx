@@ -54,7 +54,11 @@ export default function UsersTable({ category, user }) {
     setFilteredArticles(filterWithSearch);
   }, [searchFilter, selectFilter]);
 
-  if (isLoading) return <LoadingBox />;
+  if (isLoading) return (
+    <div className="col-span-12 mt-10">
+      <LoadingBox />
+    </div>
+  );
 
   return (
     <div className="col-span-full grid grid-cols-2">

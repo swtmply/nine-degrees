@@ -9,10 +9,12 @@ export default function AdminLayout({ children }) {
       <AdminNav />
 
       {/* Content */}
-      <div className="w-full max-h-[96vh] bg-slate-100 rounded-lg p-8 grid grid-cols-12 auto-rows-auto overflow-y-auto">
-        <UserButton />
+      <div className="flex flex-col w-full max-h-[96vh] bg-slate-100 rounded-lg p-8 overflow-y-auto">
+        <div className="grid grid-cols-12 auto-rows-auto ">
+          <UserButton />
 
-        {children}
+          {children}
+        </div>
       </div>
     </div>
   );

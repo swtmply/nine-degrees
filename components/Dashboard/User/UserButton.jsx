@@ -30,21 +30,21 @@ export default function UserButton() {
       <Menu.Items className="absolute z-40 -bottom-36 shadow-lg bg-white space-y-2 w-full col-start-6 flex flex-col rounded-md p-2">
         <Menu.Item>
           <Link href={`/user/profile`}>
-            <button className="py-1 hover:bg-yellow-300  rounded-md">
+            <button className="text-left px-3 py-1 hover:bg-yellow-300  rounded-md">
               Profile
             </button>
           </Link>
         </Menu.Item>
         <Menu.Item>
           <Link href={`/user/settings`}>
-            <button className="py-1 hover:bg-yellow-300  rounded-md">
+            <button className="text-left px-3 py-1 hover:bg-yellow-300  rounded-md">
               Settings
             </button>
           </Link>
         </Menu.Item>
         <Menu.Item>
           <button
-            className="py-1 hover:bg-yellow-300  rounded-md"
+            className="text-left px-3 py-1 hover:bg-yellow-300  rounded-md"
             onClick={async () => {
               const res = await signOut({
                 redirect: false,
