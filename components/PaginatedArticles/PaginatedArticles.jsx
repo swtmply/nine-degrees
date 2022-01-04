@@ -3,7 +3,12 @@ import ReactPaginate from "react-paginate";
 import ArticlesSpread from "../Articles/Spread/ArticlesSpread";
 import ArticlesStack from "../Articles/Stack/ArticlesStack";
 
-export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
+export default function PaginatedArticles({
+  items,
+  itemsPerPage = 10,
+  type,
+  grid = false,
+}) {
   const [pageNumber, setPageNumber] = useState(0);
   const articlePerPage = itemsPerPage;
   const pagesVisited = pageNumber * articlePerPage;
@@ -19,8 +24,12 @@ export default function PaginatedArticles({ items, itemsPerPage = 10, type }) {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className={`${type === "stack" && "flex flex-wrap"}`}>
+    <div className={`${grid ? "grid" : "flex flex-col"} flex flex-col`}>
+      <div
+        className={`${type === "stack" && "flex flex-wrap"} ${
+          grid && "col-span-2"
+        }`}
+      >
         {items
           ?.filter((t) => t.status === "Published")
           .slice(pagesVisited, pagesVisited + itemsPerPage)

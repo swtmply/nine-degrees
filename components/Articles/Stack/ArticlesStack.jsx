@@ -16,11 +16,11 @@ export default function ArticlesStack({ article }) {
   return (
     <div
       data-aos="fade-up"
-      className="flex mb-72 mr-4 relative cursor-pointer group"
+      className="flex mb-52 md:mb-72 mr-4 relative cursor-pointer group w-full sm:w-auto "
     >
       <Link href={`/articles/${article._id}`}>
-        <div>
-          <div className="relative bg-slate-500 w-[550px] aspect-[1.43/1]">
+        <div className="w-full">
+          <div className="relative bg-slate-500 w-full sm:w-[350px] 2xl:w-[500px] aspect-[1.43/1]">
             <Image
               src={article.image}
               layout="fill"
@@ -28,22 +28,26 @@ export default function ArticlesStack({ article }) {
               className="transition-transform group-hover:scale-125"
             />
           </div>
-          <div className="absolute min-h-[20rem] max-h-80 ml-auto mr-auto left-0 right-0 -bottom-64 mb-8 flex flex-col justify-center items-center text-center bg-stone-200 rounded-lg p-4 w-[95%]">
+          <div className="absolute md:min-h-[20rem] md:max-h-80 ml-auto mr-auto left-0 right-0 md:-bottom-64 mb-8 flex flex-col justify-center items-center text-center bg-slate-50 rounded-lg p-4 w-[95%]">
             <p
               className={`absolute -top-4 ${categoryColor(
                 article.category
-              )} text-white text-sm px-8 py-1 rounded font-bold max-w-min`}
+              )} text-white text-xs md:text-sm px-8 py-1 rounded font-bold max-w-min`}
             >
               {article.subsection}
             </p>
-            <h2 className="font-bold text-3xl">{article.title}</h2>
-            <p className="font-mono font-bold mt-2">
+            <h2 className="font-bold 2xl:text-3xl md:text-xl">
+              {article.title}
+            </h2>
+            <p className="font-mono font-bold mt-2 text-sm md:text-base">
               By {article.writer}{" "}
               <span className="text-gray-400">
                 {moment(article.createdAt).startOf("hour").fromNow()}
               </span>
             </p>
-            <p className="mt-5 line-clamp-4">{firstBlock.getText()}</p>
+            <p className="mt-5 line-clamp-2 md:line-clamp-4 text-sm">
+              {firstBlock.getText()}
+            </p>
           </div>
         </div>
       </Link>

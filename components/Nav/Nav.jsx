@@ -1,9 +1,16 @@
 import { HomeIcon, SearchIcon, XIcon } from "@heroicons/react/outline";
-import { XCircleIcon } from "@heroicons/react/solid";
+import {
+  ChevronRightIcon,
+  MenuIcon,
+  XCircleIcon,
+} from "@heroicons/react/solid";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useCallback, useEffect, useState } from "react";
 import Search from "../Search/Search";
+import { MobileMenu } from "./Menu/NavMenu";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 export default function Nav() {
   const [searchState, setSearchState] = useState(false);
@@ -25,6 +32,10 @@ export default function Nav() {
       window.removeEventListener("scroll", handleNavigation);
     };
   }, [handleNavigation]);
+
+  const { width } = useMediaQuery();
+
+  if (width < 600) return <MobileNav />;
 
   return (
     <div
@@ -70,3 +81,31 @@ export default function Nav() {
     </div>
   );
 }
+
+const MobileNav = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  useEffect(() => {
+    setIsOpen(false);
+  }, [router.asPath]);
+
+  return (
+    <div className="flex justify-between items-center col-span-full bg-black px-4 py-2 sticky top-0 z-10 text-white">
+      <Link href="/">
+        <Image
+          src={"/assets/logos/iconmark-white.svg"}
+          alt="Nine Degree Icon Mark"
+          height="64px"
+          width="64px"
+        />
+      </Link>
+
+      <button onClick={() => setIsOpen(!isOpen)}>
+        <MenuIcon className="w-8 h-8 cursor-pointer hover:text-yellowwallow" />
+      </button>
+
+      <MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
+    </div>
+  );
+};

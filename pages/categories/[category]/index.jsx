@@ -14,7 +14,7 @@ export default function CategoryPage({ articles, category }) {
         <HorizontalAd />
 
         <div className="col-span-full grid grid-cols-8 my-16">
-          <div className="col-span-5 col-start-2 ">
+          <div className="col-span-full sm:col-span-5 sm:col-start-2 col-start-2 col-end-8">
             <PaginatedArticles items={articles} type="stack" />
           </div>
           <VerticalAd />

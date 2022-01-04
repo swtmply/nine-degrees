@@ -1,4 +1,5 @@
-import { Menu } from "@headlessui/react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { ChevronDownIcon } from "@heroicons/react/solid";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useRef, useState } from "react";
@@ -96,5 +97,71 @@ export default function MenuDropdown({ title, items }) {
         </div>
       )}
     </Menu>
+  );
+}
+
+export function MobileMenuDropdown({ title, items }) {
+  return (
+    <Disclosure>
+      {({ open }) => (
+        <>
+          <Disclosure.Button
+            className={`${
+              open ? "text-yellowwallow" : ""
+            } flex w-full justify-center space-x-2 items-center text-2xl py-4 `}
+          >
+            {title.value === "so-lit" ? (
+              <>
+                <Link href={`/categories/${title.value}`}>
+                  <div className="text-white cursor-pointer">{title.name}</div>
+                </Link>
+              </>
+            ) : (
+              <>
+                <span>{title.name}</span>
+                <ChevronDownIcon className="w-8 h-8" />
+              </>
+            )}
+          </Disclosure.Button>
+          <Transition
+            show={open}
+            enter="duration-100 ease-out"
+            enterFrom="-translate-y-6 opacity-0"
+            enterTo="-translate-y-0 opacity-100"
+            leave="duration-75 ease-out"
+            leaveFrom="-translate-y-0 opacity-100"
+            leaveTo="-translate-y-6 opacity-0"
+          >
+            <Disclosure.Panel className="flex flex-col justify-center items-center space-y-4">
+              {items?.map((subsection, idx) => {
+                return (
+                  <React.Fragment key={idx}>
+                    {idx === 0 && (
+                      <Link href={`/categories/${title.value}`}>
+                        <div className="text-white cursor-pointer">
+                          {title.name} Section
+                        </div>
+                      </Link>
+                    )}
+
+                    <Link
+                      href={`${
+                        title.value.includes("nine-degrees")
+                          ? `/${title.value}/${subsection.value}`
+                          : `/categories/${title.value}/${subsection.value}`
+                      }`}
+                    >
+                      <div className="text-white cursor-pointer">
+                        {subsection.name}
+                      </div>
+                    </Link>
+                  </React.Fragment>
+                );
+              })}
+            </Disclosure.Panel>
+          </Transition>
+        </>
+      )}
+    </Disclosure>
   );
 }

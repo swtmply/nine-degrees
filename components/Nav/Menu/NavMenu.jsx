@@ -1,6 +1,9 @@
+import Search from "@/components/Search/Search";
 import { categoryList } from "@/lib/constants";
+import { ChevronRightIcon, XIcon } from "@heroicons/react/solid";
 import { useInView } from "react-intersection-observer";
 import MenuDropdown from "./Dropdown/MenuDropdown";
+import { MobileMenuDropdown } from "./Dropdown/MenuDropdown";
 
 export default function NavMenu() {
   const { ref, inView, entry } = useInView({
@@ -12,7 +15,7 @@ export default function NavMenu() {
   return (
     <div
       ref={ref}
-      className="col-span-full grid grid-cols-8 my-16 sticky top-1 z-50 pointer-events-none"
+      className="col-span-full hidden md:grid grid-cols-8 my-16 sticky top-1 z-50 pointer-events-none"
     >
       <div
         className={`${
@@ -27,6 +30,29 @@ export default function NavMenu() {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+export function MobileMenu({ isOpen, setIsOpen }) {
+  return (
+    <div
+      className={`${
+        isOpen ? "translate-x-0" : "translate-x-full"
+      } fixed inset-0 bg-black ease-in-out transition-all z-50 p-4`}
+    >
+      <button onClick={() => setIsOpen(!isOpen)}>
+        <XIcon className="w-8 h-8 cursor-pointer hover:text-yellowwallow" />
+      </button>
+      <Search />
+
+      {categoryList.map((category, idx) => (
+        <MobileMenuDropdown
+          key={idx}
+          title={category}
+          items={category.subsection}
+        />
+      ))}
     </div>
   );
 }

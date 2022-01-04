@@ -5,8 +5,8 @@ export default function NineDegreesArticle() {
   return (
     <div className="col-span-full min-h-[420px] relative mb-32">
       <Image src="/assets/cover-story-bg.png" layout="fill" objectFit="cover" />
-      <div className="w-[80%] h-full flex justify-center space-x-4">
-        <div className="bg-slate-400 w-[350px] h-full relative">
+      <div className="w-[80%] h-full flex flex-col sm:flex-row justify-center space-x-4">
+        <div className="bg-slate-400 w-[350px] h-64 sm:h-full relative">
           <Image
             src="/assets/samples/PUBMAT SAMPLE.jpg"
             layout="fill"

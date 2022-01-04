@@ -21,7 +21,7 @@ export default function Search() {
   };
 
   return (
-    <div className="h-16 w-[500px] flex items-center justify-start relative">
+    <div className="h-16 md:w-[500px] flex items-center justify-start relative">
       <input
         className="text-white bg-transparent placeholder:text-white outline-none text-xl font-mono px-2 py-2 w-full border-b-2 border-white focus:border-yellow-200"
         type="text"
@@ -34,11 +34,8 @@ export default function Search() {
             .filter((t) => t.status === "Published")
             .map((article) => {
               return (
-                <Link href={`/articles/${article._id}`}>
-                  <div
-                    key={article._id}
-                    className="flex items-center hover:bg-gray-200 hover:bg-opacity-50 p-4 space-x-6 cursor-pointer"
-                  >
+                <Link href={`/articles/${article._id} `} key={article._id}>
+                  <div className="flex items-center hover:bg-gray-200 hover:bg-opacity-50 p-4 space-x-6 cursor-pointer">
                     <div className="w-8 h-8 rounded-full relative">
                       <span className="opacity-0">image placeholder</span>
                       <Image

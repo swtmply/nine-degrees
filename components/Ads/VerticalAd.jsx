@@ -3,7 +3,7 @@ import React from "react";
 
 export default function VerticalAd() {
   return (
-    <div className="col-span-1 col-start-7 row-start-1 flex flex-col sticky -top-10 h-[1200px]">
+    <div className="col-span-1 col-start-7 row-start-1 hidden md:flex flex-col sticky -top-10 h-[1200px]">
       <div className="space-y-2 my-8">
         <p className=" uppercase font-bold">follow our socials:</p>
         <div className="flex space-x-2">

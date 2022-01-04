@@ -13,6 +13,9 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import { convertFromRaw } from "draft-js";
 import Head from "next/head";
+import Link from "next/link";
+import { categoryColor } from "@/components/Articles/Spread/ArticlesSpread";
+import PaginatedArticles from "@/components/PaginatedArticles/PaginatedArticles";
 
 export default function ArticlePage({ article }) {
   const firstBlock = convertFromRaw(JSON.parse(article.body)).getFirstBlock();
@@ -20,6 +23,10 @@ export default function ArticlePage({ article }) {
   const markup = draftToHtml(rawContentState);
 
   const { data, isLoading } = useArticles("head", article.category);
+  const { data: subsectionData, isLoading: subsectionLoading } = useArticles(
+    "subsection",
+    article.subsection
+  );
   const { data: user, isLoading: userLoading } = useQuery(
     ["user", article?.writer],
     async () => {
@@ -46,15 +53,19 @@ export default function ArticlePage({ article }) {
         <title>{article.title}</title>
       </Head>
       <main className="col-span-full grid grid-cols-12">
-        <div className="col-span-full grid grid-cols-8 my-16 relative">
-          <div className="col-span-6 col-start-2 flex flex-col justify-center items-center">
-            <p className="bg-blue-600 uppercase text-white text-sm px-8 py-1 rounded font-bold max-w-min">
+        <div className="md:col-span-full col-span-10 col-start-2 md:col-start-0 grid grid-cols-8 my-16 relative">
+          <div className="md:col-span-6 md:col-start-2 col-span-full flex flex-col justify-center items-center">
+            <p
+              className={`${categoryColor(
+                article.category
+              )} uppercase text-white text-sm px-8 py-1 rounded font-bold max-w-min`}
+            >
               {article.subsection}
             </p>
-            <h2 className="font-bold text-5xl mt-8 text-center w-[1000px]">
+            <h2 className="font-bold text-3xl md:text-5xl mt-8 text-center md:w-[1000px]">
               {article.title}
             </h2>
-            <p className="font-mono font-bold mt-2">
+            <p className="font-mono font-bold mt-2 text-center md:text-left">
               By {article.writer}
               <span className="text-gray-400">
                 {" "}
@@ -68,7 +79,7 @@ export default function ArticlePage({ article }) {
           </div>
 
           <div className="col-span-full grid grid-cols-8 gap-8 my-16 relative">
-            <div className="col-span-5 col-start-2 w-[95%]">
+            <div className="md:col-span-5 col-span-full md:col-start-2 w-[95%]">
               <div
                 className="mt-5 prose-sm markup "
                 dangerouslySetInnerHTML={{
@@ -96,21 +107,26 @@ export default function ArticlePage({ article }) {
                       layout="fill"
                       objectFit="cover"
                     />
-                    <div className="w-[100px] aspect-square relative ">
-                      <Image
-                        src={
-                          user.user.image || "/assets/samples/PUBMAT SAMPLE.jpg"
-                        }
-                        layout="fill"
-                        objectFit="cover"
-                      />
-                    </div>
-                    <div className="flex flex-col w-full justify-center">
-                      <p className="font-mono text-lg font-bold">
-                        {user?.user.name}
-                      </p>
-                      <p className="text-gray-400">{user.user.bio}</p>
-                    </div>
+                    <Link href={`/${user.user._id}`}>
+                      <div className="flex gap-4 cursor-pointer">
+                        <div className="w-[100px] aspect-square relative">
+                          <Image
+                            src={
+                              user.user.image ||
+                              "/assets/samples/PUBMAT SAMPLE.jpg"
+                            }
+                            layout="fill"
+                            objectFit="cover"
+                          />
+                        </div>
+                        <div className="flex flex-col w-full justify-center">
+                          <p className="font-mono text-lg font-bold">
+                            {user?.user.name}
+                          </p>
+                          <p className="text-gray-400">{user.user.bio}</p>
+                        </div>
+                      </div>
+                    </Link>
                   </>
                 )}
               </div>
@@ -120,12 +136,12 @@ export default function ArticlePage({ article }) {
         </div>
       </main>
 
-      <div className="col-span-full grid grid-cols-12 h-[80vh] mt-24 bg-black space-y-8">
-        {isLoading ? (
+      <div className="col-span-full grid grid-cols-12 p-8 mt-24 bg-black space-y-8">
+        {subsectionLoading ? (
           <LoadingBox />
         ) : (
           <>
-            <h1 className="text-3xl col-span-full mx-auto my-8 uppercase text-white font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
+            <h1 className="text-3xl col-span-full mx-auto uppercase text-white font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
               <Image
                 src="/assets/cover-story-bg.png"
                 layout="fill"
@@ -134,11 +150,20 @@ export default function ArticlePage({ article }) {
               More from {article.subsection}
             </h1>
             <div className="col-span-10 col-start-2">
-              <ArticleSwiper articles={data?.articles} />
+              <ArticleSwiper articles={subsectionData?.articles} />
             </div>
           </>
         )}
       </div>
+
+      {/* TODO I might also like */}
+      <main className="col-span-full grid grid-cols-12">
+        <div className="col-span-full grid grid-cols-8 my-16">
+          <div className="col-span-5 col-start-2">
+            <PaginatedArticles items={data?.articles} type="stack" grid />
+          </div>
+        </div>
+      </main>
     </ClientLayout>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function SpreadLoading() {
   return (
-    <div className="lg:w-[80%] w-full space-y-4 mb-10">
+    <div className="hidden md:block lg:w-[80%] w-full space-y-4 mb-10">
       <div className="lg:flex lg:flex-row flex flex-col items-center lg:items-end lg:space-x-4">
         <div className="w-[450px] aspect-[1.43/1] bg-gray-300 animate-pulse"></div>
 

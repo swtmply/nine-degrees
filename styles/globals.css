@@ -118,9 +118,22 @@
   border: none !important;
 }
 
-.markup > p > span {
-  font-size: 1.5rem !important;
+.markup,
+.markup > p,
+.markup > p > span,
+ins {
+  font-size: 1.25rem !important;
   font-family: "Helvetica", sans-serif !important;
+}
+
+.markup > iframe {
+  width: 75%;
+  aspect-ratio: 16/9;
+}
+
+.markup > img,
+.markup > div > img {
+  width: 75% !important;
 }
 
 .markup > p > span > strong {
@@ -128,7 +141,6 @@
 }
 
 ins {
-  font-size: 1.5rem !important;
   color: #4100fa;
 }
 
