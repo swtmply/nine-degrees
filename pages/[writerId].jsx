@@ -32,7 +32,7 @@ export default function WriterPage() {
   if (userIsLoading && isLoading) return <LoadingBox />;
 
   return (
-    <ClientLayout>
+    <ClientLayout writer>
       <main className="col-span-full grid grid-cols-12">
         <div className="col-span-full grid grid-cols-8 my-16">
           <div className="col-span-5 col-start-2 flex flex-col sm:flex-row items-end gap-4">

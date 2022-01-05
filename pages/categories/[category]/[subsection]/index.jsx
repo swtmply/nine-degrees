@@ -11,13 +11,8 @@ export default function SubsectionPage({ articles, category }) {
   return (
     <ClientLayout category={category}>
       <main className="col-span-full grid grid-cols-12">
-        <HorizontalAd />
-
         <div className="col-span-full grid grid-cols-8 my-16">
-          <div className="col-span-5 col-start-2">
-            <h2 className="uppercase font-black text-3xl tracking-widest mb-5">
-              Latest
-            </h2>
+          <div className="col-span-full sm:col-span-5 sm:col-start-2">
             <PaginatedArticles items={articles} type="stack" />
           </div>
           <VerticalAd />

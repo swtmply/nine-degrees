@@ -73,7 +73,7 @@ export default function ArticlePage({ article }) {
               </span>
             </p>
 
-            <div className="col-span-full w-full aspect-[2/1] relative mt-20">
+            <div className="col-span-full sm:w-full w-[100vw] aspect-video sm:aspect-[2/1] relative mt-20">
               <Image src={article.image} layout="fill" objectFit="cover" />
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function ArticlePage({ article }) {
           <>
             <h1 className="text-3xl col-span-full mx-auto uppercase text-white font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
               <Image
-                src="/assets/cover-story-bg.png"
+                src="/assets/more-from-bg.png"
                 layout="fill"
                 objectFit="cover"
               />
@@ -157,13 +157,17 @@ export default function ArticlePage({ article }) {
       </div>
 
       {/* TODO I might also like */}
-      <main className="col-span-full grid grid-cols-12">
+      <section className="col-span-full grid grid-cols-12 mt-8">
+        <h1 className="text-3xl col-span-full mx-auto uppercase text-black font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
+          <Image src="/assets/ymal-bg.png" layout="fill" objectFit="cover" />
+          You Might Also Like
+        </h1>
         <div className="col-span-full grid grid-cols-8 my-16">
-          <div className="col-span-5 col-start-2">
+          <div className="col-span-5 sm:col-start-2">
             <PaginatedArticles items={data?.articles} type="stack" grid />
           </div>
         </div>
-      </main>
+      </section>
     </ClientLayout>
   );
 }

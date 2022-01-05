@@ -21,7 +21,7 @@ export default function CoverStory() {
           <SwiperSlide key={idx}>
             <div className="w-full h-[400px] relative">
               <Image
-                className="rounded-b-[4rem]"
+                className="rounded-bl-[4rem]"
                 src="/assets/samples/PUBMAT SAMPLE.jpg"
                 layout="fill"
                 objectFit="cover"

@@ -11,10 +11,8 @@ export default function CategoryPage({ articles, category }) {
   return (
     <ClientLayout category={category}>
       <main className="col-span-full grid grid-cols-12">
-        <HorizontalAd />
-
         <div className="col-span-full grid grid-cols-8 my-16">
-          <div className="col-span-full sm:col-span-5 sm:col-start-2 col-start-2 col-end-8">
+          <div className="col-span-full sm:col-span-5 sm:col-start-2">
             <PaginatedArticles items={articles} type="stack" />
           </div>
           <VerticalAd />

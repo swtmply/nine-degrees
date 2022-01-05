@@ -1,9 +1,19 @@
+import Image from "next/image";
 import React from "react";
 import CoverStorySwiper from "../Swipers/CoverStorySwiper";
 
 export default function HomeHeader() {
   return (
-    <div className="col-span-full min-h-[470px] max-h-[470px] w-full bg-slate-200 relative bg-[url('/assets/Hero.png')] bg-[length:100vw_100%] bg-center bg-no-repeat hidden md:flex justify-end">
+    <div className="col-span-full min-h-[470px] max-h-[470px] w-full bg-padeepBlue hidden md:flex justify-between">
+      <div className="w-[25%] h-full relative">
+        <Image
+          src="/assets/logos/iconmark-white.svg"
+          layout="fill"
+          objectFit="cover"
+          alt="9degree Iconmark"
+          className="scale-150 -translate-x-24"
+        />
+      </div>
       <CoverStorySwiper />
     </div>
   );

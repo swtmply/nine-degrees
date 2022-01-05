@@ -6,7 +6,7 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { categoryColor } from "../Spread/ArticlesSpread";
 
-export default function ArticlesStack({ article }) {
+export default function ArticlesStack({ article, grid = false }) {
   const firstBlock = convertFromRaw(JSON.parse(article.body)).getFirstBlock();
 
   useEffect(() => {
@@ -19,8 +19,12 @@ export default function ArticlesStack({ article }) {
       className="flex mb-52 md:mb-72 mr-4 relative cursor-pointer group w-full sm:w-auto "
     >
       <Link href={`/articles/${article._id}`}>
-        <div className="w-full">
-          <div className="relative bg-slate-500 w-full sm:w-[350px] 2xl:w-[500px] aspect-[1.43/1]">
+        <div className="w-[100vw] sm:w-full">
+          <div
+            className={`${
+              grid ? "sm:w-[380px]" : "sm:w-[450px] 2xl:w-[510px]"
+            } relative bg-slate-500 aspect-[1.43/1]`}
+          >
             <Image
               src={article.image}
               layout="fill"
@@ -36,18 +40,20 @@ export default function ArticlesStack({ article }) {
             >
               {article.subsection}
             </p>
-            <h2 className="font-bold 2xl:text-3xl md:text-xl">
+            <h2 className="font-bold 2xl:text-3xl text-lg md:text-xl">
               {article.title}
             </h2>
-            <p className="font-mono font-bold mt-2 text-sm md:text-base">
+            <p className="font-mono font-bold mt-2 text-xs md:text-base">
               By {article.writer}{" "}
               <span className="text-gray-400">
                 {moment(article.createdAt).startOf("hour").fromNow()}
               </span>
             </p>
-            <p className="mt-5 line-clamp-2 md:line-clamp-4 text-sm">
-              {firstBlock.getText()}
-            </p>
+            {!grid && (
+              <p className="mt-5 line-clamp-2 md:line-clamp-4 text-sm">
+                {firstBlock.getText()}
+              </p>
+            )}
           </div>
         </div>
       </Link>
