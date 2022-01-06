@@ -37,7 +37,7 @@ export default function PaginatedArticles({
             if (type === "spread")
               return <ArticlesSpread article={article} key={idx} />;
 
-            return <ArticlesStack article={article} key={idx} grid />;
+            return <ArticlesStack article={article} key={idx} grid={grid} />;
           })}
       </div>
       <ReactPaginate

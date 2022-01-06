@@ -164,7 +164,11 @@ export default function ArticlePage({ article }) {
         </h1>
         <div className="col-span-full grid grid-cols-8 my-16">
           <div className="col-span-5 sm:col-start-2">
-            <PaginatedArticles items={data?.articles} type="stack" grid />
+            <PaginatedArticles
+              items={data?.articles}
+              type="stack"
+              grid={true}
+            />
           </div>
         </div>
       </section>

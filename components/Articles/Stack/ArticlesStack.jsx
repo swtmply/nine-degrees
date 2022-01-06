@@ -22,7 +22,7 @@ export default function ArticlesStack({ article, grid = false }) {
         <div className="w-[100vw] sm:w-full">
           <div
             className={`${
-              grid ? "sm:w-[380px]" : "sm:w-[450px] 2xl:w-[510px]"
+              !grid ? "sm:w-[450px] 2xl:w-[510px]" : "sm:w-[380px]"
             } relative bg-slate-500 aspect-[1.43/1]`}
           >
             <Image
@@ -49,10 +49,12 @@ export default function ArticlesStack({ article, grid = false }) {
                 {moment(article.createdAt).startOf("hour").fromNow()}
               </span>
             </p>
-            {!grid && (
+            {!grid ? (
               <p className="mt-5 line-clamp-2 md:line-clamp-4 text-sm">
                 {firstBlock.getText()}
               </p>
+            ) : (
+              <></>
             )}
           </div>
         </div>
