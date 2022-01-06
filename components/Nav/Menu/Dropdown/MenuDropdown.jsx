@@ -137,7 +137,13 @@ export function MobileMenuDropdown({ title, items }) {
                 return (
                   <React.Fragment key={idx}>
                     {idx === 0 && (
-                      <Link href={`/categories/${title.value}`}>
+                      <Link
+                        href={`${
+                          title.value.includes("nine-degrees")
+                            ? `/${title.value}`
+                            : `/categories/${title.value}`
+                        }`}
+                      >
                         <div className="text-white cursor-pointer">
                           {title.name} Section
                         </div>

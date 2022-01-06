@@ -112,8 +112,7 @@ export default function ArticlePage({ article }) {
                         <div className="w-[100px] aspect-square relative">
                           <Image
                             src={
-                              user.user.image ||
-                              "/assets/samples/PUBMAT SAMPLE.jpg"
+                              user.user.image || "/assets/samples/profile.png"
                             }
                             layout="fill"
                             objectFit="cover"

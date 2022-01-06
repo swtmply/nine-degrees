@@ -13,7 +13,7 @@ export default function WeArePage() {
 
       <NavMenu />
 
-      <div className="col-span-full min-h-[420px] relative mb-32">
+      <div className="col-span-full min-h-[420px] relative mb-64">
         <div className="col-span-full grid grid-cols-8 my-16">
           <div className="col-span-6 col-start-2 h-[4.5rem]">
             <h1 className="font-black text-5xl">We Are 9°</h1>

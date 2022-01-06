@@ -45,7 +45,13 @@ export default function Footer() {
       <div className="flex flex-col md:flex-row w-[80%] justify-between text-white mt-10">
         {categoryList.map((category, idx) => (
           <div key={idx} className="mb-8">
-            <Link href={`/categories/${category.value}`}>
+            <Link
+              href={`${
+                category.value.includes("nine-degrees")
+                  ? `/${category.value}`
+                  : `/categories/${category.value}`
+              }`}
+            >
               <p className="font-bold uppercase cursor-pointer mb-12">
                 {category.name}
               </p>
