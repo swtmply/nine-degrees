@@ -141,7 +141,7 @@ export default function ArticlePage({ article }) {
           <LoadingBox />
         ) : (
           <>
-            <h1 className="text-3xl col-span-full mx-auto uppercase text-white font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
+            <h1 className="text-xl sm:text-3xl col-span-full mx-auto uppercase text-white font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
               <Image
                 src="/assets/more-from-bg.png"
                 layout="fill"
@@ -158,7 +158,7 @@ export default function ArticlePage({ article }) {
 
       {/* TODO I might also like */}
       <section className="col-span-full grid grid-cols-12 mt-8">
-        <h1 className="text-3xl col-span-full mx-auto uppercase text-black font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
+        <h1 className="text-xl sm:text-3xl col-span-full mx-auto uppercase text-black font-bold w-[90%] h-[100px] lg:max-w-[1280px] text-center relative p-8">
           <Image src="/assets/ymal-bg.png" layout="fill" objectFit="cover" />
           You Might Also Like
         </h1>

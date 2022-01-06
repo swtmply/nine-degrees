@@ -1,4 +1,6 @@
 import { XCircleIcon } from "@heroicons/react/solid";
+import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 export default function VerticalAd() {
@@ -7,9 +9,36 @@ export default function VerticalAd() {
       <div className="space-y-2 my-8">
         <p className=" uppercase font-bold">follow our socials:</p>
         <div className="flex space-x-2">
-          <XCircleIcon className="w-12 h-12" />
-          <XCircleIcon className="w-12 h-12" />
-          <XCircleIcon className="w-12 h-12" />
+          <Link href="https://www.facebook.com/atbp.2n">
+            <a target="_blank">
+              <Image
+                src="/assets/icons/facebook icon.png"
+                width={56}
+                height={56}
+                className="cursor-pointer"
+              />
+            </a>
+          </Link>
+          <Link href="https://twitter.com/atbp2n">
+            <a target="_blank">
+              <Image
+                src="/assets/icons/twitter icon.png"
+                width={56}
+                height={56}
+                className="cursor-pointer"
+              />
+            </a>
+          </Link>
+          <Link href="https://www.instagram.com/9degreesph/">
+            <a target="_blank">
+              <Image
+                src="/assets/icons/ig icon.png"
+                width={56}
+                height={56}
+                className="cursor-pointer"
+              />
+            </a>
+          </Link>
         </div>
       </div>
       <div className="w-[200px] h-[400px] bg-yellowwallow mb-4"></div>
