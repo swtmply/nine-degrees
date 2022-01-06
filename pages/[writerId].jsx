@@ -52,7 +52,11 @@ export default function WriterPage() {
 
         <div className="col-span-full grid grid-cols-8 my-16">
           <div className="col-span-5 col-start-2 ">
-            <PaginatedArticles items={articlesData?.articles} type="stack" />
+            <PaginatedArticles
+              items={articlesData?.articles}
+              type="stack"
+              grid={false}
+            />
           </div>
           <VerticalAd />
         </div>

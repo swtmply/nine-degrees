@@ -24,9 +24,11 @@ export default function WeArePage() {
               9° is an interactive multi-platform magazine that unfolds the
               transformative degrees of narratives through composite
               storytelling. With vivid imageries and honest truths, we show the
+              world who we really are.
               <br />
-              world who we really are. Stay connected with us through our social
-              media accounts or you can email us at pup.icommunicate21@gmail.com
+              <br />
+              Stay connected with us through our social media accounts or you
+              can email us at pup.icommunicate21@gmail.com
             </p>
           </div>
         </div>
