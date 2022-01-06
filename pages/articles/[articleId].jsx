@@ -123,7 +123,9 @@ export default function ArticlePage({ article }) {
                           <p className="font-mono text-lg font-bold">
                             {user?.user.name}
                           </p>
-                          <p className="text-gray-400">{user.user.bio}</p>
+                          <p className="text-gray-400 line-clamp-2">
+                            {user.user.bio}
+                          </p>
                         </div>
                       </div>
                     </Link>
