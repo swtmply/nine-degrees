@@ -1,6 +1,5 @@
 import Image from "next/image";
 import React from "react";
-import { XCircleIcon } from "@heroicons/react/solid";
 import { categoryList } from "@/lib/constants";
 import Link from "next/link";
 
@@ -54,14 +53,6 @@ export default function Footer() {
             <div>
               {category?.subsection?.map((subsection, idx) => (
                 <div key={idx}>
-                  {idx === 0 && (
-                    <Link href={`/categories/${category.value}`}>
-                      <div className="text-white cursor-pointer">
-                        {category.name} Section
-                      </div>
-                    </Link>
-                  )}
-
                   <Link
                     href={`${
                       category.value.includes("nine-degrees")
