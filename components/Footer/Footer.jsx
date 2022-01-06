@@ -55,18 +55,18 @@ export default function Footer() {
               {category?.subsection?.map((subsection, idx) => (
                 <div key={idx}>
                   {idx === 0 && (
-                    <Link href={`/categories/${title.value}`}>
+                    <Link href={`/categories/${category.value}`}>
                       <div className="text-white cursor-pointer">
-                        {title.name} Section
+                        {category.name} Section
                       </div>
                     </Link>
                   )}
 
                   <Link
                     href={`${
-                      title.value.includes("nine-degrees")
-                        ? `/${title.value}/${subsection.value}`
-                        : `/categories/${title.value}/${subsection.value}`
+                      category.value.includes("nine-degrees")
+                        ? `/${category.value}/${subsection.value}`
+                        : `/categories/${category.value}/${subsection.value}`
                     }`}
                   >
                     <div className="text-white cursor-pointer">

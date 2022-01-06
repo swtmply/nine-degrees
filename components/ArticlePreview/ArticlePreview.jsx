@@ -85,7 +85,7 @@ export default function ArticlePreview() {
                 />
                 <div className="w-[100px] aspect-square relative ">
                   <Image
-                    src="/assets/samples/PUBMAT SAMPLE.jpg"
+                    src="/assets/samples/profile.png"
                     layout="fill"
                     objectFit="cover"
                   />
@@ -95,10 +95,10 @@ export default function ArticlePreview() {
                     {session?.user?.name}
                   </p>
                   <p className="text-gray-400">
-                    Sheldeen is a writer who loves to watch series and to play
-                    with her dogs in her free time — ways to pause and take a
-                    break. She also aims to write to advocate for animal welfare
-                    and rights.
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Laboriosam, voluptates qui minima voluptatibus iste
+                    deserunt. Nulla omnis quas odit quibusdam fugit magni
+                    veritatis? Rerum iste error ab eveniet, debitis ex.
                   </p>
                 </div>
               </div>

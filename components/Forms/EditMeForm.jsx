@@ -93,9 +93,7 @@ export default function EditMeForm({ user }) {
         <div className="h-80 w-80 bg-red-200 relative">
           <Image
             src={
-              imagePreview ||
-              formValues.image ||
-              "/assets/samples/PUBMAT SAMPLE.jpg"
+              imagePreview || formValues.image || "/assets/samples/profile.png"
             }
             layout="fill"
             objectFit="cover"

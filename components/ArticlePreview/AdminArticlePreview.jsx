@@ -65,10 +65,10 @@ export default function AdminArticlePreview({ article }) {
                     {article?.writer}
                   </p>
                   <p className="text-gray-400">
-                    Sheldeen is a writer who loves to watch series and to play
-                    with her dogs in her free time — ways to pause and take a
-                    break. She also aims to write to advocate for animal welfare
-                    and rights.
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Minus maiores optio nam eos, asperiores sit enim, odit totam
+                    quae provident quia doloremque ut sapiente quibusdam, cum
+                    aspernatur tempora distinctio corrupti!
                   </p>
                 </div>
               </div>

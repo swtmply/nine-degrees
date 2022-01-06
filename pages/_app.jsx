@@ -3,6 +3,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from "react-query";
 import { SessionProvider } from "next-auth/react";
 import React from "react";
 import { ArticleFieldsProvider } from "@/contexts/ArticleFieldsContext";
+import Head from "next/head";
 
 export default function MyApp({
   Component,
@@ -11,16 +12,22 @@ export default function MyApp({
   const [queryClient] = React.useState(() => new QueryClient());
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
-        <ArticleFieldsProvider>
-          <SessionProvider session={session} refetchInterval={5 * 60}>
-            <div className="bg-slate-50 min-h-[100vh]">
-              <Component {...pageProps} />
-            </div>
-          </SessionProvider>
-        </ArticleFieldsProvider>
-      </Hydrate>
-    </QueryClientProvider>
+    <>
+      <Head>
+        <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico" />
+        <title>9Degrees</title>
+      </Head>
+      <QueryClientProvider client={queryClient}>
+        <Hydrate state={pageProps.dehydratedState}>
+          <ArticleFieldsProvider>
+            <SessionProvider session={session} refetchInterval={5 * 60}>
+              <div className="bg-slate-50 min-h-[100vh]">
+                <Component {...pageProps} />
+              </div>
+            </SessionProvider>
+          </ArticleFieldsProvider>
+        </Hydrate>
+      </QueryClientProvider>
+    </>
   );
 }

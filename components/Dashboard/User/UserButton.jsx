@@ -19,7 +19,7 @@ export default function UserButton() {
           </div>
           <div className="w-20 h-20 bg-slate-500 rounded-md relative">
             <Image
-              src={session?.user.image || "/assets/samples/PUBMAT SAMPLE.jpg"}
+              src={session?.user.image || "/assets/samples/profile.png"}
               layout="fill"
               objectFit="cover"
               className="rounded-md"

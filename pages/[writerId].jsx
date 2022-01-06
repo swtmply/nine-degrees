@@ -38,7 +38,7 @@ export default function WriterPage() {
           <div className="col-span-5 col-start-2 flex flex-col sm:flex-row items-end gap-4">
             <div className="h-64 aspect-square relative">
               <Image
-                src={data?.user.image || "/assets/samples/PUBMAT SAMPLE.jpg"}
+                src={data?.user.image || "/assets/samples/profile.png"}
                 layout="fill"
                 objectFit="cover"
               />
