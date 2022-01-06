@@ -41,8 +41,30 @@ export default function VerticalAd() {
           </Link>
         </div>
       </div>
-      <div className="w-[200px] h-[400px] bg-yellowwallow mb-4"></div>
-      <div className="w-[200px] h-[600px] bg-yellowwallow"></div>
+      <div className="w-[200px] h-[400px] bg-yellowwallow mb-4 relative">
+        <Link href="https://twitter.com/atbp2n">
+          <a target="_blank">
+            <Image
+              src="/assets/ads/Mini Skycraper Ad.jpg"
+              layout="fill"
+              objectFit="cover"
+              className="cursor-pointer"
+            />
+          </a>
+        </Link>
+      </div>
+      <div className="w-[200px] h-[600px] bg-yellowwallow relative">
+        <Link href="https://www.instagram.com/9degreesph">
+          <a target="_blank">
+            <Image
+              src="/assets/ads/Skycraper Ad.jpg"
+              layout="fill"
+              objectFit="cover"
+              className="cursor-pointer"
+            />
+          </a>
+        </Link>
+      </div>
     </div>
   );
 }

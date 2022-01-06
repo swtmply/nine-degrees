@@ -4,11 +4,13 @@ import React from "react";
 export default function Custom404() {
   return (
     <div className="min-h-screen flex justify-center items-center flex-col">
-      <Image
-        src="/assets/icons/404 not found symbol.png"
-        width={512}
-        height={256}
-      />
+      <div className="w-1/2 relative aspect-video">
+        <Image
+          src="/assets/icons/404 not found symbol.png"
+          layout="fill"
+          objectFit="contain"
+        />
+      </div>
       <h1 className="font-mono text-redtagging font-bold text-3xl">
         this isn't about you, this is about me
       </h1>

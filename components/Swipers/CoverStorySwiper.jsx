@@ -17,18 +17,36 @@ export default function CoverStory() {
         spaceBetween={0}
         slidesPerView={1}
       >
-        {[...Array(3)].map((_, idx) => (
-          <SwiperSlide key={idx}>
-            <div className="w-full h-[400px] relative">
-              <Image
-                className="rounded-bl-[4rem]"
-                src="/assets/samples/PUBMAT SAMPLE.jpg"
-                layout="fill"
-                objectFit="cover"
-              />
-            </div>
-          </SwiperSlide>
-        ))}
+        <SwiperSlide>
+          <div className="w-full h-[400px] relative">
+            <Image
+              className="rounded-bl-[4rem]"
+              src="/assets/samples/Hero Carousel 1 and 3.jpg"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full h-[400px] relative">
+            <Image
+              className="rounded-bl-[4rem]"
+              src="/assets/samples/Hero Carousel 2.jpg"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="w-full h-[400px] relative">
+            <Image
+              className="rounded-bl-[4rem]"
+              src="/assets/samples/Hero Carousel 1 and 3.jpg"
+              layout="fill"
+              objectFit="cover"
+            />
+          </div>
+        </SwiperSlide>
       </Swiper>
     </div>
   );

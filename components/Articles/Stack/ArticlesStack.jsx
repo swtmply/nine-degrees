@@ -22,7 +22,7 @@ export default function ArticlesStack({ article, grid = false }) {
         <div className="w-[100vw] sm:w-full">
           <div
             className={`${
-              !grid ? "sm:w-[450px] 2xl:w-[510px]" : "sm:w-[380px]"
+              !grid ? "sm:w-[400px] 2xl:w-[530px]" : "sm:w-[350px]"
             } relative bg-slate-500 aspect-[1.43/1]`}
           >
             <Image
