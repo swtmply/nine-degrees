@@ -24,6 +24,11 @@
   }
 }
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
 /* Swiper styles */
 
 .custom-scrollbar::-webkit-scrollbar {

@@ -6,6 +6,7 @@ import NavMenu from "../Nav/Menu/NavMenu";
 import HorizontalAd from "../Ads/HorizontalAd";
 import CategoryHeader from "../Headers/CategoryHeader";
 import Image from "next/image";
+import { ChevronUpIcon } from "@heroicons/react/solid";
 
 export default function ClientLayout({ children, category, writer = false }) {
   return (

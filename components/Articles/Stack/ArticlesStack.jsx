@@ -36,9 +36,9 @@ export default function ArticlesStack({ article, grid = false }) {
             <p
               className={`absolute -top-4 ${categoryColor(
                 article.category
-              )} text-white text-xs md:text-sm px-8 py-1 rounded font-bold max-w-min`}
+              )} text-white text-xs md:text-sm px-8 py-1 rounded font-bold max-w-max`}
             >
-              {article.subsection}
+              {article.subsection ? article.subsection : article.category}
             </p>
             <h2 className="font-bold 2xl:text-3xl text-lg md:text-xl">
               {article.title}

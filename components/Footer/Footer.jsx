@@ -2,10 +2,15 @@ import Image from "next/image";
 import React from "react";
 import { categoryList } from "@/lib/constants";
 import Link from "next/link";
+import { ChevronUpIcon } from "@heroicons/react/solid";
 
 export default function Footer() {
   return (
     <div className="col-span-full min-h-[750px] md:max-h-[750px] bg-black relative sm:bg-[url('/assets/Footer.png')] bg-[length:100vw_100%] bg-center bg-no-repeat flex flex-col py-4 justify-center items-center">
+      <a className="absolute right-24 -top-24" href="#">
+        <ChevronUpIcon className="w-8 h-8 rounded-full bg-white ring-4 ring-yellowwallow" />
+      </a>
+
       <Image src="/assets/logos/full-white.svg" width={200} height={250} />
       <div className="text-white space-y-2 mt-4 text-center">
         <p className=" uppercase font-bold">follow our socials:</p>
