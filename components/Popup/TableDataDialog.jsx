@@ -10,7 +10,7 @@ import { useMutation } from "react-query";
 export default function TableDataDialog({ isOpen, setIsOpen, article }) {
   const router = useRouter();
   const { data: session } = useSession();
-
+  // console.log("table data dialog", article)
   const { isLoading, isSuccess, mutate } = useMutation(
     async (data) => {
       return await axios.put(`/api/articles/${article._id}`, data);
@@ -86,10 +86,17 @@ export default function TableDataDialog({ isOpen, setIsOpen, article }) {
                   mutate={mutate}
                   mutateDelete={mutateDelete}
                 />
-              ) : session?.user?.role === "Writer" ? (
+              ) : // change to if article writer == session.user.name
+              // ) : session?.user?.name === article?.writer ? (
+              session?.user?.role === "Writer" ? (
                 <WriterEdit article={article} router={router} mutate={mutate} />
               ) : (
-                <HeadEdit article={article} router={router} mutate={mutate} />
+                <HeadEdit
+                  article={article}
+                  router={router}
+                  mutate={mutate}
+                  session={session}
+                />
               )}
             </Dialog.Description>
             <Toaster>
@@ -221,7 +228,7 @@ const TrashEdit = ({ article, mutate, mutateDelete }) => {
   );
 };
 
-const HeadEdit = ({ article, router, mutate }) => {
+const HeadEdit = ({ article, router, mutate, session }) => {
   const handleStatusChange = (status) => {
     mutate({ status });
   };
@@ -243,26 +250,35 @@ const HeadEdit = ({ article, router, mutate }) => {
         />
         <button
           onClick={() => handleAddComment()}
-          className="py-2 px-4 bg-blue-600 text-white rounded-md font-bold flex items-center self-end w-64"
+          className="max-w-[49%] py-2 px-4 bg-blue-600 text-white rounded-md font-bold flex items-center self-end w-64"
         >
           <PencilAltIcon className="w-6 h-6 mr-2" />
           <span>Add Comment</span>
         </button>
       </div>
       <p className="self-start px-4 mb-2 mt-5 font-bold text-xl">Actions</p>
-      <div className="flex items-center px-4 flex-wrap gap-2 max-w-lg ">
+      <div className="flex items-center px-4 flex-wrap gap-2 max-w-lg">
         {filterButtons
           .filter((t) => t.name !== article.status)
           .map((b, idx) => (
             <button
               key={idx}
               onClick={() => handleStatusChange(b.name)}
-              className={`${b.color} py-2 px-4 text-white rounded-md font-bold flex space-x-2`}
+              className={`${b.color} min-w-[49%] py-2 px-4 text-white rounded-md font-bold flex space-x-2`}
             >
               {b.component}
               <span>Move to {b.name}</span>
             </button>
           ))}
+        {session?.user.name === article?.writer && (
+          <button
+            onClick={() => router.push(`/user/articles/${article._id}`)}
+            className="max-w-[49%] py-2 px-4 bg-blue-600 text-white rounded-md font-bold flex w-64"
+          >
+            <PencilAltIcon className="w-6 h-6 mr-2" />
+            Edit Article Content
+          </button>
+        )}
       </div>
     </div>
   );

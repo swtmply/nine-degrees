@@ -4,6 +4,8 @@ import { titles } from "@/lib/constants";
 import { statusLength } from "@/utils/index";
 import { useRouter } from "next/router";
 import React from "react";
+import Image from "next/image";
+import CreateBackground from "../../../public/assets/create-article-bg.png";
 
 export default function AdminHeader() {
   const router = useRouter();
@@ -42,11 +44,14 @@ export default function AdminHeader() {
         </div>
       </div>
 
-      <div className="flex flex-col bg-white p-4 col-span-3 col-start-5 h-40 mb-2 rounded-md">
-        <div className="flex flex-col items-end">
+      <div className="flex flex-col bg-white col-span-3 col-start-5 h-40 mb-2 rounded-md relative">
+        <div className="relative overflow-hidden">
+          <Image src={CreateBackground} />
+        </div>
+        <div className="flex flex-col items-end p-4 absolute min-w-full">
           <p className="font-bold text-2xl mb-1">Good day, bhie!</p>
           <p className="text-base text-right leading-5 mb-2">
-            Feeling motivated to inspire Bernadette and Jonathan today?
+            Feeling motivated to inspire <p>Bernadette and Jonathan today?</p>
           </p>
           <button
             onClick={() => router.push("/user/articles/create")}
