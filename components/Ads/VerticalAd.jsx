@@ -42,7 +42,7 @@ export default function VerticalAd() {
         </div>
       </div>
       <div className="w-[200px] h-[400px] bg-yellowwallow mb-4 relative">
-        <Link href="https://twitter.com/atbp2n">
+        <Link href="https://twitter.com/9degreesph">
           <a target="_blank">
             <Image
               src="/assets/ads/Mini Skycraper Ad.jpg"
