@@ -15,7 +15,7 @@ export default function Footer() {
       <div className="text-white space-y-2 mt-4 text-center">
         <p className=" uppercase font-bold">follow our socials:</p>
         <div className="flex gap-4">
-          <Link href="https://www.facebook.com/atbp.2n">
+          <Link href="https://www.facebook.com/9degreesph">
             <a target="_blank">
               <Image
                 src="/assets/icons/facebook icon.png"
@@ -25,7 +25,7 @@ export default function Footer() {
               />
             </a>
           </Link>
-          <Link href="https://twitter.com/atbp2n">
+          <Link href="https://twitter.com/9degreesph">
             <a target="_blank">
               <Image
                 src="/assets/icons/twitter icon.png"
