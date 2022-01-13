@@ -1,5 +1,6 @@
 import ArticlePreview from "@/components/ArticlePreview/ArticlePreview";
 import ArticleForm from "@/components/Forms/ArticleForm";
+import { getSession } from "next-auth/react";
 
 export default function CreateArticlePage() {
   return (

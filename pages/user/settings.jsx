@@ -4,6 +4,7 @@ import LoadingBox from "@/components/Loaders/LoadingBox";
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
+import { getSession } from "next-auth/react";
 
 export default function UserSettings() {
   const { data, isLoading } = useQuery(["me"], async () => {

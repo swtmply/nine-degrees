@@ -2,6 +2,7 @@ import AdminHeader from "@/components/Dashboard/Header/AdminHeader";
 import UsersTable from "@/components/Dashboard/Table/UsersTable";
 import AdminLayout from "@/components/Layouts/AdminLayout";
 import React from "react";
+import { getSession } from "next-auth/react";
 
 export default function Users() {
   return (
