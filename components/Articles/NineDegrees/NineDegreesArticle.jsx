@@ -9,7 +9,7 @@ export default function NineDegreesArticle({ story, index }) {
     <div className="col-span-full min-h-[420px] mb-32 bg-[url('/assets/cover-story-bg.png')] bg-cover">
       <div className="w-[80%] h-full flex flex-col sm:flex-row justify-center space-x-4 z-10">
         {parseInt(index) !== 8 ? (
-          <div className="bg-slate-400 w-[350px] h-64 sm:h-full relative">
+          <div className="bg-slate-400 md:w-[350px] w-screen h-64 sm:h-full relative px-2">
             <Image
               src={story.images[0]}
               layout="fill"
@@ -21,7 +21,7 @@ export default function NineDegreesArticle({ story, index }) {
           <div className="bg-transparent w-[350px] h-64 sm:h-full relative" />
         )}
         <div className="flex flex-col self-end max-w-[600px]">
-          <p className="bg-black text-white text-sm px-8 py-1 rounded font-bold max-w-max">
+          <p className="bg-black text-white text-sm px-8 py-1 mt-4 rounded font-bold max-w-max">
             Cover Story
           </p>
           <h2 className="font-bold text-3xl mt-8">{story.title}</h2>
