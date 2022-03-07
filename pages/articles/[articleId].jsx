@@ -76,6 +76,9 @@ export default function ArticlePage({ article }) {
             <div className="col-span-full sm:w-full w-[100vw] aspect-video sm:aspect-[2/1] relative mt-20">
               <Image src={article.image} layout="fill" objectFit="cover" />
             </div>
+            <p className="self-end italic text-gray-400">
+              {article.caption}
+            </p>
           </div>
 
           <div className="col-span-full grid grid-cols-8 gap-8 my-16 relative">
