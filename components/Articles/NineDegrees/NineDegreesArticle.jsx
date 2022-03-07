@@ -8,7 +8,7 @@ export default function NineDegreesArticle({ story, index }) {
   return (
     <div className="col-span-full min-h-[420px] mb-32 bg-[url('/assets/cover-story-bg.png')] bg-cover">
       <div className="w-[80%] h-full flex flex-col sm:flex-row justify-center space-x-4 z-10">
-        {parseInt(index) !== 8 && (
+        {parseInt(index) !== 8 ? (
           <div className="bg-slate-400 w-[350px] h-64 sm:h-full relative">
             <Image
               src={story.images[0]}
@@ -17,6 +17,8 @@ export default function NineDegreesArticle({ story, index }) {
               loading="eager"
             />
           </div>
+        ) : (
+          <div className="bg-transparent w-[350px] h-64 sm:h-full relative" />
         )}
         <div className="flex flex-col self-end max-w-[600px]">
           <p className="bg-black text-white text-sm px-8 py-1 rounded font-bold max-w-max">

@@ -69,7 +69,7 @@ export default function Story({ article, aindex }) {
               ))}
               {index !== 8 && (
                 <div className="flex flex-col items-center gap-4 my-5">
-                  <div className="w-[75%] max-h-[150vh] aspect-[9/16] relative">
+                  <div className="w-[85%] max-h-[170vh] aspect-[9/16] relative">
                     <Image
                       src={article.images[3]}
                       layout="fill"
@@ -77,7 +77,7 @@ export default function Story({ article, aindex }) {
                       priority={true}
                     />
                   </div>
-                  <div className="w-[75%] max-h-[150vh] aspect-[9/16] relative">
+                  <div className="w-[85%] max-h-[170vh] aspect-[9/16] relative">
                     <Image
                       src={article.images[4]}
                       layout="fill"

@@ -48,13 +48,17 @@ export default function CoverStory() {
               intersection of shared experiences, pains, and victories.
             </p>
             <div>
-              <p className="text-base">
-                <span className="text-neutral-600">Words by MJ</span>{" "}
+              <p className="text-base text-neutral-400 font-bold">
+                <span className="text-neutral-600 font-normal">
+                  Words by MJ
+                </span>{" "}
                 Catequista, Kim Leal, Angela Guiral, Alfred Esmilla, Ailla Dela
                 Cruz, Khiel Flores, and Mary Grace Paneda
               </p>
-              <p className="text-base">
-                <span className="text-neutral-600">Research by MJ</span>{" "}
+              <p className="text-base text-neutral-400 font-bold">
+                <span className="text-neutral-600 font-normal">
+                  Research by MJ
+                </span>{" "}
                 Catequista, Kim Leal, Angela Guiral, Alfred Esmilla, Ailla Dela
                 Cruz, Khiel Flores, Gea Adlag, Jaymar Aquino, and Mary Grace
                 Paneda

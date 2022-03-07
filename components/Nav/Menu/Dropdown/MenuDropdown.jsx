@@ -33,7 +33,7 @@ export default function MenuDropdown({ title, items }) {
 
           if (title.value.includes("nine-degrees")) {
             // TODO: change if needed
-            router.push(`/`);
+            router.push(`/nine-degrees/cover-story`);
           } else {
             router.push(`/categories/${title.value}`);
           }
