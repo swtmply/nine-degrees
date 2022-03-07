@@ -25,10 +25,7 @@ export default function NineDegreesArticle({ story, index }) {
             Cover Story
           </p>
           <h2 className="font-bold text-3xl mt-8">{story.title}</h2>
-          <p className="font-mono font-bold mt-2">
-            9Degrees Team
-            <span className="text-gray-400 ml-2">5 hours ago</span>
-          </p>
+          <p className="font-mono font-bold mt-2">9Degrees Team</p>
           {story.paragraphs[0].split("\n").map((str) => (
             <p className="mt-2">{str}</p>
           ))}

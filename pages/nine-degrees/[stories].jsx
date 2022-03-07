@@ -34,7 +34,6 @@ export default function Story({ article, aindex }) {
             </h2>
             <p className="font-mono font-bold mt-2 text-center md:text-left">
               By 9Degrees Team
-              <span className="text-gray-400"> 5 hours ago</span>
             </p>
           </div>
 
