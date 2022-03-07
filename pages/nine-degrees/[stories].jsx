@@ -11,7 +11,7 @@ export default function Story({ article, aindex }) {
   return (
     <ClientLayout category={"nine-degrees"}>
       {index !== 8 && (
-        <section className="col-span-full min-h-screen relative">
+        <section className="col-span-full min-h-screen  relative">
           <Image
             src={article.images[5]}
             layout="fill"
@@ -168,9 +168,9 @@ export default function Story({ article, aindex }) {
               index !== 8 ? `/nine-degrees/${index + 1}` : "/nine-degrees/0"
             }
           >
-            <p className="text-3xl cursor-pointer">Read Next</p>
+            <p className="md:text-3xl text-xl cursor-pointer">Read Next</p>
           </Link>
-          <h2 className="text-6xl">
+          <h2 className="md:text-6xl text-2xl font-bold">
             {index !== 8 ? stories[index + 1]?.title : stories[0].title}
           </h2>
         </div>
