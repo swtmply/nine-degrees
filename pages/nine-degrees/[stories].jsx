@@ -91,7 +91,7 @@ export default function Story({ article, aindex }) {
               {article?.paragraphs[2]?.split("\n").map((str) => (
                 <p className="mt-5">{str}</p>
               ))}
-              <div className="flex flex-col items-center gap-4 my-10">
+              <div className="flex flex-col items-center gap-4 mt-10">
                 <Image
                   src="/assets/logos/iconmark-black.svg"
                   height={50}
@@ -102,40 +102,48 @@ export default function Story({ article, aindex }) {
           </div>
         </div>
       </main>
-      <section className="col-span-full grid grid-cols-12">
-        <div className="col-span-10 col-start-3 flex flex-col my-16 relative text-xl">
-          <p>
-            Photography and Creative Direction by
-            <span className="font-bold"> Kimpoy Albalate</span>
-          </p>
-          <p>
-            Fashion and Beauty Direction by
-            <span className="font-bold"> Jaymar Aquino</span>
-          </p>
-          <p>
-            Make-up, Hair, and Styling by
-            <span className="font-bold">
-              {" "}
-              Gea Adlag, Khiel Flores, Cheska Lapus
-            </span>
-          </p>
-          <p>
-            Shoot Coordination
-            <span className="font-bold">
-              {" "}
-              Ailla dela Cruz and MJ Catequista
-            </span>
-          </p>
-          <p>
-            Set and Production Design by
-            <span className="font-bold"> Kimpoy Albalate</span>
-          </p>
-          <p>
-            Shot on location at
-            <span className="font-bold"> A+ Studios</span>
-          </p>
-        </div>
-      </section>
+
+      {index !== 8 && (
+        <main className="col-span-full grid grid-cols-12">
+          <div className="md:col-span-full col-span-10 col-start-2 md:col-start-0 grid grid-cols-8 my-16 relative">
+            <section className="md:col-span-6 md:col-start-2 col-span-full flex flex-col justify-center ">
+              <div className="col-span-10 col-start-3 flex flex-col my-16 relative text-xl">
+                <p>
+                  Photography and Creative Direction by
+                  <span className="font-bold"> Kimpoy Albalate</span>
+                </p>
+                <p>
+                  Fashion and Beauty Direction by
+                  <span className="font-bold"> Jaymar Aquino</span>
+                </p>
+                <p>
+                  Make-up, Hair, and Styling by
+                  <span className="font-bold">
+                    {" "}
+                    Gea Adlag, Khiel Flores, Cheska Lapus
+                  </span>
+                </p>
+                <p>
+                  Shoot Coordination
+                  <span className="font-bold">
+                    {" "}
+                    Ailla dela Cruz and MJ Catequista
+                  </span>
+                </p>
+                <p>
+                  Set and Production Design by
+                  <span className="font-bold"> Kimpoy Albalate</span>
+                </p>
+                <p>
+                  Shot on location at
+                  <span className="font-bold"> A+ Studios</span>
+                </p>
+              </div>
+            </section>
+          </div>
+        </main>
+      )}
+
       <section className="col-span-full h-80 relative">
         {index !== 8 ? (
           <Image src={article.images[5]} layout="fill" objectFit="cover" />
