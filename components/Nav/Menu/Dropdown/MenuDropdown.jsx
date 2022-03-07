@@ -141,7 +141,8 @@ export function MobileMenuDropdown({ title, items }) {
                       <Link
                         href={`${
                           title.value.includes("nine-degrees")
-                            ? `/${title.value}`
+                            ? // TODO: change if needed
+                              `/nine-degrees/cover-story`
                             : `/categories/${title.value}`
                         }`}
                       >
