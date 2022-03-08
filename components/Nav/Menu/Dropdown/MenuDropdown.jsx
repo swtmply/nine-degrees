@@ -32,7 +32,8 @@ export default function MenuDropdown({ title, items }) {
           setOpenState(!openState);
 
           if (title.value.includes("nine-degrees")) {
-            router.push(`/${title.value}`);
+            // TODO: change if needed
+            router.push(`/nine-degrees/cover-story`);
           } else {
             router.push(`/categories/${title.value}`);
           }
@@ -140,7 +141,8 @@ export function MobileMenuDropdown({ title, items }) {
                       <Link
                         href={`${
                           title.value.includes("nine-degrees")
-                            ? `/${title.value}`
+                            ? // TODO: change if needed
+                              `/nine-degrees/cover-story`
                             : `/categories/${title.value}`
                         }`}
                       >
