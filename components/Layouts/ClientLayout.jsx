@@ -6,8 +6,12 @@ import NavMenu from "../Nav/Menu/NavMenu";
 import HorizontalAd from "../Ads/HorizontalAd";
 import CategoryHeader from "../Headers/CategoryHeader";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export default function ClientLayout({ children, category, writer = false }) {
+  const router = useRouter();
+  const { articleId } = router.query;
+
   return (
     <div className="grid grid-cols-12 auto-rows-min gap-0 w-full min-h-screen">
       <Nav />
@@ -31,8 +35,7 @@ export default function ClientLayout({ children, category, writer = false }) {
 
       {children}
 
-      <HorizontalAd />
-
+      {articleId != null ? <HorizontalAd /> : null}
       <Footer />
     </div>
   );
