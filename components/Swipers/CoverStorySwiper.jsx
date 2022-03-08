@@ -21,7 +21,7 @@ export default function CoverStory() {
           <div className="w-full h-[400px] relative">
             <Image
               className="rounded-bl-[4rem]"
-              src="/assets/samples/Hero Carousel 1 and 3.jpg"
+              src="/assets/samples/Carousel_hero.jpg"
               layout="fill"
               objectFit="cover"
             />
@@ -41,7 +41,7 @@ export default function CoverStory() {
           <div className="w-full h-[400px] relative">
             <Image
               className="rounded-bl-[4rem]"
-              src="/assets/samples/Hero Carousel 1 and 3.jpg"
+              src="/assets/samples/Carousel_coverstory.jpg"
               layout="fill"
               objectFit="cover"
             />
