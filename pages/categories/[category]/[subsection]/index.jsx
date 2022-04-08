@@ -15,7 +15,7 @@ export default function SubsectionPage({ articles, category }) {
           <div className="col-span-full sm:col-span-5 sm:col-start-2">
             <PaginatedArticles items={articles} type="stack" />
           </div>
-          <VerticalAd />
+          <VerticalAd category={category}/>
         </div>
       </main>
     </ClientLayout>

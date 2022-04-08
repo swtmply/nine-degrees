@@ -135,7 +135,7 @@ export default function ArticlePage({ article }) {
                 )}
               </div>
             </div>
-            <VerticalAd />
+            <VerticalAd category={article.category} />
           </div>
         </div>
       </main>

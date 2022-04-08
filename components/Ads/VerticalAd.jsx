@@ -3,7 +3,9 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-export default function VerticalAd() {
+export default function VerticalAd({ category }) {
+  const cat = category?.toLowerCase();
+
   return (
     <div className="col-span-1 col-start-7 row-start-1 hidden md:flex flex-col sticky -top-10 h-[1200px]">
       <div className="space-y-2 my-8">
@@ -54,16 +56,29 @@ export default function VerticalAd() {
         </Link>
       </div>
       <div className="w-[200px] h-[600px] bg-yellowwallow relative">
-        <Link href="https://www.instagram.com/9degreesph">
-          <a target="_blank">
-            <Image
-              src="/assets/ads/Skycraper Ad.jpg"
-              layout="fill"
-              objectFit="cover"
-              className="cursor-pointer"
-            />
-          </a>
-        </Link>
+        {category ? (
+          <Image
+            src={
+              cat == "news"
+                ? "/assets/ads/Kotex 200x600.png"
+                : cat == "features"
+                ? "/assets/ads/9Degrees Skyscraper Ad R1.jpg"
+                : cat == "community"
+                ? "/assets/ads/MTG_ADSPACE.jpg"
+                : "/assets/ads/Nextile PH Skyscraper Ad.png"
+            }
+            layout="fill"
+            objectFit="cover"
+            className="cursor-pointer"
+          />
+        ) : (
+          <Image
+            src="/assets/ads/Kotex 200x600.png"
+            layout="fill"
+            objectFit="cover"
+            className="cursor-pointer"
+          />
+        )}
       </div>
     </div>
   );
