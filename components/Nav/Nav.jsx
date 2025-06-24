@@ -96,8 +96,8 @@ const MobileNav = () => {
         <Image
           src={"/assets/logos/iconmark-white.svg"}
           alt="Nine Degree Icon Mark"
-          height="64px"
-          width="64px"
+          height={64}
+          width={64}
         />
       </Link>
 

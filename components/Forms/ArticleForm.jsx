@@ -57,6 +57,8 @@ export default function ArticleForm() {
   const handleSubmit = async () => {
     const upload = await uploadImage(image);
 
+    console.log(upload)
+
     formValues.image = upload.url;
     formValues.category = category.name;
     formValues.subsection = subsection;

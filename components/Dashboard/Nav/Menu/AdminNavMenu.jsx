@@ -41,14 +41,10 @@ export default function AdminNavMenu() {
         {menu.map((m, idx) => (
           <Menu.Item key={idx}>
             {({ active }) => (
-              <Link href={m.value}>
-                <a
-                  className={`${
+              <Link href={m.value} className={`${
                     router.pathname === m.value ? "font-bold" : "font-normal"
-                  }`}
-                >
-                  {m.name}
-                </a>
+                  }`}>
+                {m.name}
               </Link>
             )}
           </Menu.Item>

@@ -15,35 +15,29 @@ export default function Footer() {
       <div className="text-white space-y-2 mt-4 text-center">
         <p className=" uppercase font-bold">follow our socials:</p>
         <div className="flex gap-4">
-          <Link href="https://www.facebook.com/9degreesph">
-            <a target="_blank">
-              <Image
-                src="/assets/icons/facebook icon.png"
-                width={56}
-                height={56}
-                className="cursor-pointer"
-              />
-            </a>
+          <Link href="https://www.facebook.com/9degreesph" target="_blank">
+            <Image
+              src="/assets/icons/facebook icon.png"
+              width={56}
+              height={56}
+              className="cursor-pointer"
+            />
           </Link>
-          <Link href="https://twitter.com/9degreesph">
-            <a target="_blank">
-              <Image
-                src="/assets/icons/twitter icon.png"
-                width={56}
-                height={56}
-                className="cursor-pointer"
-              />
-            </a>
+          <Link href="https://twitter.com/9degreesph" target="_blank">
+            <Image
+              src="/assets/icons/twitter icon.png"
+              width={56}
+              height={56}
+              className="cursor-pointer"
+            />
           </Link>
-          <Link href="https://www.instagram.com/9degreesph/">
-            <a target="_blank">
-              <Image
-                src="/assets/icons/ig icon.png"
-                width={56}
-                height={56}
-                className="cursor-pointer"
-              />
-            </a>
+          <Link href="https://www.instagram.com/9degreesph/" target="_blank">
+            <Image
+              src="/assets/icons/ig icon.png"
+              width={56}
+              height={56}
+              className="cursor-pointer"
+            />
           </Link>
         </div>
       </div>

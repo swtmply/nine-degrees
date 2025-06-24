@@ -11,48 +11,40 @@ export default function VerticalAd({ category }) {
       <div className="space-y-2 my-8">
         <p className=" uppercase font-bold">follow our socials:</p>
         <div className="flex space-x-2">
-          <Link href="https://www.facebook.com/9degreesph">
-            <a target="_blank">
-              <Image
-                src="/assets/icons/facebook icon.png"
-                width={56}
-                height={56}
-                className="cursor-pointer"
-              />
-            </a>
+          <Link href="https://www.facebook.com/9degreesph" target="_blank">
+            <Image
+              src="/assets/icons/facebook icon.png"
+              width={56}
+              height={56}
+              className="cursor-pointer"
+            />
           </Link>
-          <Link href="https://twitter.com/9degreesph">
-            <a target="_blank">
-              <Image
-                src="/assets/icons/twitter icon.png"
-                width={56}
-                height={56}
-                className="cursor-pointer"
-              />
-            </a>
+          <Link href="https://twitter.com/9degreesph" target="_blank">
+            <Image
+              src="/assets/icons/twitter icon.png"
+              width={56}
+              height={56}
+              className="cursor-pointer"
+            />
           </Link>
-          <Link href="https://www.instagram.com/9degreesph/">
-            <a target="_blank">
-              <Image
-                src="/assets/icons/ig icon.png"
-                width={56}
-                height={56}
-                className="cursor-pointer"
-              />
-            </a>
+          <Link href="https://www.instagram.com/9degreesph/" target="_blank">
+            <Image
+              src="/assets/icons/ig icon.png"
+              width={56}
+              height={56}
+              className="cursor-pointer"
+            />
           </Link>
         </div>
       </div>
       <div className="w-[200px] h-[400px] bg-yellowwallow mb-4 relative">
-        <Link href="https://twitter.com/9degreesph">
-          <a target="_blank">
-            <Image
-              src="/assets/ads/Mini Skycraper Ad.jpg"
-              layout="fill"
-              objectFit="cover"
-              className="cursor-pointer"
-            />
-          </a>
+        <Link href="https://twitter.com/9degreesph" target="_blank">
+          <Image
+            src="/assets/ads/Mini Skycraper Ad.jpg"
+            layout="fill"
+            objectFit="cover"
+            className="cursor-pointer"
+          />
         </Link>
       </div>
       <div className="w-[200px] h-[600px] bg-yellowwallow relative">
